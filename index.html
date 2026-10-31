@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Brother</title>
+  <style>
+    :root{
+      --bg1:#1e0b1d;
+      --bg2:#3f0f2d;
+      --card:#fff3f6;
+      --rose:#ff5f8f;
+      --pink:#ff89b5;
+      --gold:#f8d57e;
+      --deep:#2a1128;
+      --text:#2f1d2d;
+      --white:#fffafc;
+    }
+
+    *{ box-sizing:border-box; }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    
+
+    body{
+      margin:0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, var(--bg1), var(--bg2));
+      color: var(--white);
+      overflow-x:hidden;
+    }
+
+    .page{
+      min-height:100vh;
+      width:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+      padding:60px 20px;
+      overflow:hidden;
+    }
+
+    .page::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(255,255,255,0.12), transparent 30%),
+        radial-gradient(circle at 80% 35%, rgba(255,140,180,0.16), transparent 25%),
+        radial-gradient(circle at 50% 75%, rgba(255, 217, 119, 0.08), transparent 30%);
+      pointer-events:none;
+    }
+
+    .content{
+      position:relative;
+      z-index:1;
+      width:min(900px, 90vw);
+      background: rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.18);
+      backdrop-filter: blur(10px);
+      border-radius:26px;
+      box-shadow: 0 25px 80px rgba(0,0,0,0.35);
+      padding:40px 30px;
+    }
+
+    .hero{
+      text-align:center;
+      padding:40px 20px 30px;
+    }
+
+    .badge{
+      display:inline-block;
+      padding:8px 18px;
+      border-radius:999px;
+      background: rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.2);
+      letter-spacing:2px;
+      font-size:12px;
+      text-transform:uppercase;
+      color: var(--gold);
+      margin-bottom:20px;
+    }
+
+    h1{
+      font-size: clamp(2.8rem, 6vw, 6rem);
+      line-height:1.05;
+      margin:10px 0;
+      letter-spacing:1px;
+      color: #fff7fb;
+      text-shadow: 0 5px 25px rgba(0,0,0,0.25);
+    }
+
+    .subtitle{
+      font-size: clamp(1rem, 2vw, 1.5rem);
+      color: #ffe9ef;
+      margin-bottom:25px;
+    }
+
+    .heart{
+      font-size: clamp(2.5rem, 4vw, 4rem);
+      color: var(--pink);
+      animation: pulse 1.6s infinite;
+      display:inline-block;
+      margin: 10px 0 22px;
+    }
+
+    @keyframes pulse{
+      0%, 100%{ transform: scale(1); opacity:1; }
+      50%{ transform: scale(1.15); opacity:0.9; }
+    }
+
+    .cta{
+      display:inline-block;
+      background: linear-gradient(135deg, var(--rose), #ff88b5);
+      color: white;
+      padding:15px 28px;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:700;
+      letter-spacing:0.5px;
+      box-shadow:0 14px 30px rgba(255,95,143,0.35);
+      transition: transform 0.3s ease;
+    }
+
+    .cta:hover{
+      transform: translateY(-3px);
+    }
+
+    .section{
+      display:grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap:25px;
+      align-items:center;
+    }
+
+    .section h2{
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom:18px;
+      color: #fff1f6;
+    }
+
+    .section p{
+      font-size:1.08rem;
+      line-height:1.8;
+      color: #ffeaf2;
+      margin:0 0 18px;
+    }
+
+    .photo-card{
+      min-height:420px;
+      border-radius:24px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.18), rgba(255,255,255,0.04)),
+        url("karan.jpg.png") center/cover no-repeat;
+      border:1px solid rgba(255,255,255,0.18);
+      box-shadow:0 18px 50px rgba(0,0,0,0.22);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .photo-card::after{
+      content:"Brother";
+      position:absolute;
+      left:20px;
+      bottom:20px;
+      background: rgba(22, 7, 19, 0.45);
+      backdrop-filter: blur(5px);
+      padding:10px 16px;
+      border-radius:999px;
+      font-weight:600;
+      color: var(--white);
+    }
+
+    .timeline{
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+      margin-top:20px;
+    }
+
+    .item{
+      background: rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.15);
+      border-left:4px solid var(--gold);
+      border-radius:14px;
+      padding:16px 18px;
+      font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+    }
+
+    .item strong{
+      display:block;
+      color: var(--gold);
+      font-size:0.9rem;
+      letter-spacing:1px;
+      text-transform:uppercase;
+      margin-bottom:6px;
+    }
+
+    .item span{
+      font-size:1.08rem;
+      color:#fff1f5;
+    }
+
+    .quote{
+      text-align:center;
+      font-size: clamp(1.1rem, 2vw, 1.8rem);
+      line-height:1.8;
+      color: #fff7fb;
+      padding:28px 18px;
+      background: rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.18);
+      border-radius:18px;
+      font-style:italic;
+    }
+
+    .wish-box{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(150px,1fr));
+      gap:18px;
+      margin-top:20px;
+    }
+
+    .wish{
+      background: rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.18);
+      border-radius:18px;
+      padding:20px 16px;
+      text-align:center;
+      min-height:170px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .wish .icon{
+      font-size:2rem;
+    }
+
+    .wish h3{
+      margin:0;
+      font-size:1.05rem;
+      color: var(--gold);
+    }
+
+    .wish p{
+      margin:0;
+      line-height:1.6;
+      font-size:0.96rem;
+      color:#fbeef2;
+    }
+
+    .final{
+      text-align:center;
+      padding:40px 18px 20px;
+    }
+
+    .final h2{
+      font-size: clamp(2.3rem, 5vw, 4rem);
+      margin-bottom:16px;
+      color:#fff7fb;
+    }
+
+    .final .heart-big{
+      font-size:4rem;
+      color: var(--pink);
+      display:block;
+      margin:12px 0;
+      animation: pulse 1.6s infinite;
+    }
+
+    .signature{
+      display:inline-block;
+      margin-top:20px;
+      color:var(--gold);
+      letter-spacing:1px;
+      font-weight:700;
+      font-size:1.1rem;
+      border-top:1px solid rgba(255,255,255,0.25);
+      padding-top:10px;
+    }
+
+    @media (max-width: 768px){
+      .section{
+        grid-template-columns:1fr;
+      }
+
+      .wish-box{
+        grid-template-columns:1fr;
+      }
+
+      .content{
+        padding:26px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="page" id="page1">
+    <div class="content hero">
+      <div class="badge">For My Dearest Brother</div>
+      <h1>Happy Birthday Brother🎂</h1>
+      <div class="subtitle">To the one who makes life brighter, stronger, Happy, and warmer.</div>
+      <div class="heart">❤</div><br>
+      <a href="#page2" class="cta">Click Here Bhiya😊</a>
+    </div>
+  </section>
+
+  <section class="page" id="page2">
+    <div class="content section">
+      <div>
+        <h2>My Sweet Brother</h2>
+        <p>
+          Dear brother, every year with you feels like a blessing wrapped in love, laughter, and endless memories.
+          You are not just my brother; you are my strength, my smile, my calm, and my forever support.
+        </p>
+        <p>
+          I pray that your life keeps growing with happiness, peace, and success. May every dream you hold
+          come true, and every path you take be filled with light, courage, and joy.
+        </p>
+        <p>
+          On your birthday, I wish you a heart full of love, a mind full of dreams, and a soul full of peace.
+          May your days be as beautiful as your heart and as bright as your smile.
+        </p>
+      </div>
+      <div class="photo-card"></div>
+      <a href="#page3" class="cta" style="width: 100px;">Next</a>
+    </div>
+  </section>
+
+  <section class="page" id="page3">
+    <div class="content">
+      <h2 style="text-align:center; margin-bottom:18px;">Our Beautiful Brotherhood</h2>
+      <div class="timeline">
+        <div class="item">
+          <strong>Childhood</strong>
+          <span>You were my first partner, my playmate, and my constant companion.</span>
+        </div>
+        <div class="item">
+          <strong>Growing Up</strong>
+          <span>i wish that you will grow your life and get every success and always remember that  i am always with you. </span>
+        </div>
+        <div class="item">
+          <strong>Today</strong>
+          <span>You are the kind of brother everyone wishes for — loving, kind, and deeply caring.</span>
+        </div>
+        <div class="item">
+          <strong>Forever</strong>
+          <span>No matter how life changes, my love and respect for you will always remain.</span>
+        </div>
+      </div>
+      <br>
+       <a href="#page4" class="cta">Next</a>
+    </div>
+  </section>
+
+  <section class="page" id="page4">
+    <div class="content">
+      <h2 style="text-align:center;">A Birthday Wish for You</h2>
+      <div class="quote">
+        “May your life be full of laughter, your heart be full of peace, and your dreams be full of wings.
+         May every new day bring you closer to your goals and fill your soul with endless happiness.”
+      </div>
+
+      <div class="wish-box">
+        <div class="wish">
+          <div class="icon">🌟</div>
+          <h3>Success</h3>
+          <p>May every effort you make turn into beautiful achievements.</p>
+        </div>
+        <div class="wish">
+          <div class="icon">💖</div>
+          <h3>Love</h3>
+          <p>May your heart always be surrounded by affection and warmth.</p>
+        </div>
+        <div class="wish">
+          <div class="icon">✨</div>
+          <h3>Joy</h3>
+          <p>May your life be full of sweet moments and beautiful memories.</p>
+        </div>
+      </div>
+      <br>
+       <a href="#page5" class="cta">Next</a>
+    </div>
+  </section>
+
+  <section class="page" id="page5">
+    <div class="content final">
+      <h2>Happy Birthday, Brother!</h2>
+      <div class="heart-big">❤</div>
+      <p style="font-size:1.1rem; line-height:1.8; color:#fff0f5;">
+        You are a rare blessing in my life. Thank you for being my brother, my friend, and my forever support.
+        I am proud of you, I love you, and I pray for your happiness always.
+      </p>
+      <div class="signature">With all my love, always — Your Brother</div>
+    </div>
+  </section>
+ <a href="#page1" class="cta" style="margin-left: 330px; margin-bottom: 20px;">Start Again</a>
+ 
+</body>
+</html>
