@@ -1,423 +1,569 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Akaya+Kanadaka&family=Baloo+Bhai+2:wght@400..800&family=Concert+One&family=Permanent+Marker&display=swap" rel="stylesheet">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Akaya+Kanadaka&family=Baloo+Bhai+2:wght@400..800&family=Concert+One&family=Permanent+Marker&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
-  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Happy Birthday Brother</title>
+  <title>Happy Birthday, Brother!</title>
   <style>
-    :root{
-      --bg1:#1e0b1d;
-      --bg2:#3f0f2d;
-      --card:#fff3f6;
-      --rose:#ff5f8f;
-      --pink:#ff89b5;
-      --gold:#f8d57e;
-      --deep:#2a1128;
-      --text:#2f1d2d;
-      --white:#fffafc;
+    :root {
+      --pink: #ff6b9a;
+      --gold: #ffd166;
+      --purple: #7048e8;
+      --ink: #271b38;
+      --cream: #fffaf2;
     }
 
-    *{ box-sizing:border-box; }
+    * { box-sizing: border-box; }
 
-    html{
-      scroll-behavior:smooth;
+    body {
+      margin: 0;
+      min-height: 100vh;
+      overflow: hidden;
+      color: var(--ink);
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      background: #1d1530;
     }
 
-    
+    button { font: inherit; }
 
-    body{
-      margin:0;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, var(--bg1), var(--bg2));
-      color: var(--white);
-      overflow-x:hidden;
-    }
-    .h1{font-family: "Baloo Bhai 2", sans-serif;
-       }
-
-    p{
-      font-family:"Spectral", serif;
-      font-weight: 600;
-      
+    .page {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 70px 24px 90px;
+      overflow-y: auto;
+      text-align: center;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(35px) scale(.98);
+      transition: opacity .65s ease, transform .65s ease, visibility .65s;
     }
 
-    .page{
-      min-height:100vh;
-      width:100%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      position:relative;
-      padding:60px 20px;
-      overflow:hidden;
+    .page.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(0) scale(1);
+      z-index: 1;
     }
 
-    .page::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        radial-gradient(circle at 15% 20%, rgba(255,255,255,0.12), transparent 30%),
-        radial-gradient(circle at 80% 35%, rgba(255,140,180,0.16), transparent 25%),
-        radial-gradient(circle at 50% 75%, rgba(255, 217, 119, 0.08), transparent 30%);
-      pointer-events:none;
+    .content {
+      width: min(850px, 100%);
+      padding: clamp(24px, 5vw, 55px);
+      border: 1px solid rgba(255,255,255,.55);
+      border-radius: 30px;
+      background: rgba(255,255,255,.78);
+      box-shadow: 0 25px 80px rgba(24, 12, 42, .2);
+      backdrop-filter: blur(12px);
+      animation: float-in .8s both;
     }
 
-    .content{
-      position:relative;
-      z-index:1;
-      width:min(900px, 90vw);
-      background: rgba(255,255,255,0.08);
-      border:1px solid rgba(255,255,255,0.18);
-      backdrop-filter: blur(10px);
-      border-radius:26px;
-      box-shadow: 0 25px 80px rgba(0,0,0,0.35);
-      padding:40px 30px;
+    @keyframes float-in {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .hero{
-      text-align:center;
-      padding:40px 20px 30px;
+    h1, h2, p { margin-top: 0; }
+
+    h1 {
+      margin-bottom: 14px;
+      font-size: clamp(2.6rem, 8vw, 5.7rem);
+      line-height: 1;
+      color: var(--purple);
+      text-shadow: 3px 4px 0 rgba(255, 107, 154, .18);
     }
 
-    .badge{
-      display:inline-block;
-      padding:8px 18px;
-      border-radius:999px;
-      background: rgba(255,255,255,0.08);
-      border:1px solid rgba(255,255,255,0.2);
-      letter-spacing:2px;
-      font-size:12px;
-      text-transform:uppercase;
-      color: var(--gold);
-      margin-bottom:20px;
+    h2 {
+      margin-bottom: 16px;
+      color: var(--purple);
+      font-size: clamp(2rem, 5vw, 3.2rem);
     }
 
-    h1{
-      font-size: clamp(2.8rem, 6vw, 6rem);
-      line-height:1.05;
-      margin:10px 0;
-      letter-spacing:1px;
-      color: #fff7fb;
-      text-shadow: 0 5px 25px rgba(0,0,0,0.25);
+    p {
+      font-size: clamp(1.05rem, 2.4vw, 1.3rem);
+      line-height: 1.7;
     }
 
-    .subtitle{
-      font-size: clamp(1rem, 2vw, 1.5rem);
-      color: #ffe9ef;
-      margin-bottom:25px;
+    .eyebrow {
+      margin-bottom: 12px;
+      color: #a34a87;
+      font-size: .85rem;
+      font-weight: 800;
+      letter-spacing: .22em;
+      text-transform: uppercase;
     }
 
-    .heart{
-      font-size: clamp(2.5rem, 4vw, 4rem);
-      color: var(--pink);
-      animation: pulse 1.6s infinite;
-      display:inline-block;
-      margin: 10px 0 22px;
+    .emoji-big {
+      display: block;
+      margin-bottom: 12px;
+      font-size: clamp(3rem, 8vw, 5rem);
+      animation: bob 2.2s ease-in-out infinite;
     }
 
-    @keyframes pulse{
-      0%, 100%{ transform: scale(1); opacity:1; }
-      50%{ transform: scale(1.15); opacity:0.9; }
+    @keyframes bob {
+      50% { transform: translateY(-10px) rotate(3deg); }
     }
 
-    .cta{
-      display:inline-block;
-      background: linear-gradient(135deg, var(--rose), #ff88b5);
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      margin: 8px 5px 0;
+      padding: 14px 23px;
+      border: 0;
+      border-radius: 999px;
       color: white;
-      padding:15px 28px;
-      border-radius:999px;
-      text-decoration:none;
-      font-weight:700;
-      letter-spacing:0.5px;
-      box-shadow:0 14px 30px rgba(255,95,143,0.35);
-      transition: transform 0.3s ease;
+      background: linear-gradient(135deg, var(--pink), #ed4eaa);
+      box-shadow: 0 9px 22px rgba(237, 78, 170, .3);
+      cursor: pointer;
+      font-weight: 800;
+      transition: transform .2s, box-shadow .2s;
     }
 
-    .cta:hover{
+    .button:hover {
       transform: translateY(-3px);
+      box-shadow: 0 13px 28px rgba(237, 78, 170, .38);
     }
 
-    .section{
-      display:grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap:25px;
-      align-items:center;
+    .button.secondary {
+      color: var(--purple);
+      background: white;
+      box-shadow: 0 8px 20px rgba(50, 30, 80, .12);
     }
 
-    .section h2{
-      font-size: clamp(2rem, 4vw, 3rem);
-      margin-bottom:18px;
-      color: #fff1f6;
+    .page-count {
+      position: fixed;
+      z-index: 5;
+      top: 20px;
+      left: 50%;
+      padding: 8px 15px;
+      border: 1px solid rgba(255,255,255,.5);
+      border-radius: 20px;
+      color: white;
+      background: rgba(25, 16, 43, .32);
+      backdrop-filter: blur(8px);
+      transform: translateX(-50%);
+      font-size: .9rem;
+      letter-spacing: .1em;
     }
 
-    .section p{
-      font-size:1.08rem;
-      line-height:1.8;
-      color: #ffeaf2;
-      margin:0 0 18px;
+    .dots {
+      position: fixed;
+      z-index: 5;
+      bottom: 20px;
+      left: 50%;
+      display: flex;
+      gap: 10px;
+      transform: translateX(-50%);
     }
 
-    .photo-card{
-      min-height:420px;
-      border-radius:24px;
-      background:
-        linear-gradient(135deg, rgba(255,255,255,0.18), rgba(255,255,255,0.04)),
-        url("karan.jpg.png") center/cover no-repeat;
-      border:1px solid rgba(255,255,255,0.18);
-      box-shadow:0 18px 50px rgba(0,0,0,0.22);
-      position:relative;
-      overflow:hidden;
+    .dot {
+      width: 11px;
+      height: 11px;
+      padding: 0;
+      border: 2px solid white;
+      border-radius: 50%;
+      background: transparent;
+      cursor: pointer;
+      transition: transform .2s, background .2s;
     }
 
-    .photo-card::after{
-      content:"Brother";
-      position:absolute;
-      left:20px;
-      bottom:20px;
-      background: rgba(22, 7, 19, 0.45);
-      backdrop-filter: blur(5px);
-      padding:10px 16px;
-      border-radius:999px;
-      font-weight:600;
-      color: var(--white);
+    .dot.active {
+      background: var(--gold);
+      transform: scale(1.35);
     }
 
-    .timeline{
-      display:flex;
-      flex-direction:column;
-      gap:18px;
-      margin-top:20px;
+    .page-arrow {
+      position: fixed;
+      z-index: 5;
+      top: 50%;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255,255,255,.6);
+      border-radius: 50%;
+      color: white;
+      background: rgba(25, 16, 43, .38);
+      cursor: pointer;
+      transform: translateY(-50%);
+      font-size: 1.4rem;
     }
 
-    .item{
-      background: rgba(255,255,255,0.06);
-      border:1px solid rgba(255,255,255,0.15);
-      border-left:4px solid var(--gold);
-      border-radius:14px;
-      padding:16px 18px;
-      font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+    #prev { left: 17px; }
+    #next { right: 17px; }
+
+    /* Six page backgrounds */
+    #page1 { background: radial-gradient(circle at 20% 20%, #ffb6d2, transparent 35%), linear-gradient(135deg, #5e3b9c, #f079a8); }
+    #page2 { background: radial-gradient(circle at 80% 10%, #fff1a8, transparent 30%), linear-gradient(135deg, #ffe2bd, #ff9fbd); }
+    #page3 { background: radial-gradient(circle at 10% 80%, #b4f1de, transparent 35%), linear-gradient(135deg, #b9d8ff, #d6b8ff); }
+    #page4 { background: radial-gradient(circle at 80% 20%, #ffdf91, transparent 30%), linear-gradient(135deg, #ffd2e7, #ff9e80); }
+    #page5 { background: radial-gradient(circle at 20% 20%, #fff49b, transparent 30%), linear-gradient(135deg, #8e73d8, #f16f9d); }
+    #page6 { background: radial-gradient(circle at 70% 15%, #ffd785, transparent 30%), linear-gradient(135deg, #ff97b8, #8362d8); }
+
+    #page1 .content {
+      color: white;
+      background: rgba(39, 21, 68, .47);
+      border-color: rgba(255,255,255,.35);
     }
 
-    .item strong{
-      display:block;
-      color: var(--gold);
-      font-size:0.9rem;
-      letter-spacing:1px;
-      text-transform:uppercase;
-      margin-bottom:6px;
+    #page1 h1 { color: #fff0a8; }
+    #page1 .eyebrow { color: #ffe6a0; }
+
+    .memory-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 25px 0;
     }
 
-    .item span{
-      font-size:1.08rem;
-      color:#fff1f5;
+    .memory {
+      padding: 20px 12px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.68);
+      box-shadow: 0 8px 20px rgba(42, 25, 69, .08);
+      transition: transform .25s;
     }
 
-    .quote{
-      text-align:center;
-      font-size: clamp(1.1rem, 2vw, 1.8rem);
-      line-height:1.8;
-      color: #fff7fb;
-      padding:28px 18px;
-      background: rgba(255,255,255,0.04);
-      border:1px solid rgba(255,255,255,0.18);
-      border-radius:18px;
-      font-style:italic;
+    .memory:hover { transform: translateY(-7px) rotate(-1deg); }
+    .memory span { display: block; margin-bottom: 8px; font-size: 2.5rem; }
+    .memory strong { display: block; color: #7048e8; }
+
+    .wish-list {
+      display: grid;
+      gap: 12px;
+      max-width: 580px;
+      margin: 25px auto;
+      text-align: left;
     }
 
-    .wish-box{
-      display:grid;
-      grid-template-columns:repeat(3, minmax(150px,1fr));
-      gap:18px;
-      margin-top:20px;
+    .wish {
+      padding: 13px 17px;
+      border-radius: 15px;
+      background: rgba(255,255,255,.7);
+      animation: float-in .7s both;
     }
 
-    .wish{
-      background: rgba(255,255,255,0.06);
-      border:1px solid rgba(255,255,255,0.18);
-      border-radius:18px;
-      padding:20px 16px;
-      text-align:center;
-      min-height:170px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      flex-direction:column;
-      gap:10px;
+    .wish:nth-child(2) { animation-delay: .12s; }
+    .wish:nth-child(3) { animation-delay: .24s; }
+    .wish:nth-child(4) { animation-delay: .36s; }
+
+    /* Cake illustration */
+    .cake-area { margin: 28px auto 20px; }
+    .cake {
+      position: relative;
+      width: 210px;
+      height: 145px;
+      margin: 0 auto;
     }
 
-    .wish .icon{
-      font-size:2rem;
+    .cake-base {
+      position: absolute;
+      right: 15px;
+      bottom: 0;
+      left: 15px;
+      height: 85px;
+      border: 4px solid #fff;
+      border-radius: 16px 16px 22px 22px;
+      background: repeating-linear-gradient(180deg, #ff77a8 0 25px, #ffd2e1 25px 42px);
+      box-shadow: 0 12px 0 #d7467b;
+      transition: transform .8s ease;
     }
 
-    .wish h3{
-      margin:0;
-      font-size:1.05rem;
-      color: var(--gold);
+    .cake-top {
+      position: absolute;
+      z-index: 2;
+      top: 40px;
+      right: 15px;
+      left: 15px;
+      height: 30px;
+      border: 4px solid white;
+      border-radius: 50%;
+      background: #fff1aa;
     }
 
-    .wish p{
-      margin:0;
-      line-height:1.6;
-      font-size:0.96rem;
-      color:#fbeef2;
+    .candle {
+      position: absolute;
+      z-index: 3;
+      top: 4px;
+      left: 50%;
+      width: 12px;
+      height: 42px;
+      border-radius: 5px;
+      background: repeating-linear-gradient(135deg, #fff 0 6px, #7a5be7 6px 12px);
+      transform: translateX(-50%);
     }
 
-    .final{
-      text-align:center;
-      padding:40px 18px 20px;
+    .flame {
+      position: absolute;
+      top: -19px;
+      left: 50%;
+      width: 16px;
+      height: 22px;
+      border-radius: 50% 50% 45% 45%;
+      background: #ff9f1c;
+      box-shadow: 0 0 18px #ffcf52;
+      transform: translateX(-50%);
+      animation: flicker .35s infinite alternate;
     }
 
-    .final h2{
-      font-size: clamp(2.3rem, 5vw, 4rem);
-      margin-bottom:16px;
-      color:#fff7fb;
+    @keyframes flicker {
+      to { transform: translateX(-50%) scale(.8) rotate(5deg); }
     }
 
-    .final .heart-big{
-      font-size:4rem;
-      color: var(--pink);
-      display:block;
-      margin:12px 0;
-      animation: pulse 1.6s infinite;
+    .cake.cut .cake-base {
+      transform: rotate(-8deg) translateX(-22px);
+      clip-path: polygon(0 0, 60% 0, 50% 100%, 0 100%);
     }
 
-    .signature{
-      display:inline-block;
-      margin-top:20px;
-      color:var(--gold);
-      letter-spacing:1px;
-      font-weight:700;
-      font-size:1.1rem;
-      border-top:1px solid rgba(255,255,255,0.25);
-      padding-top:10px;
+    .cake.cut .cake-top { transform: translateX(-12px) rotate(-5deg); }
+
+    .final-note {
+      margin: 22px 0;
+      padding: 20px;
+      border-radius: 20px;
+      color: #6841a5;
+      background: rgba(255,255,255,.65);
+      font-size: 1.2rem;
+      font-weight: 700;
     }
 
-    @media (max-width: 768px){
-      .section{
-        grid-template-columns:1fr;
-      }
+    #confetti {
+      position: fixed;
+      z-index: 10;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
 
-      .wish-box{
-        grid-template-columns:1fr;
-      }
+    .sparkle {
+      position: absolute;
+      color: white;
+      opacity: .8;
+      animation: twinkle 2s ease-in-out infinite;
+    }
 
-      .content{
-        padding:26px 18px;
+    @keyframes twinkle {
+      50% { opacity: .25; transform: scale(.65) rotate(25deg); }
+    }
+
+    @media (max-width: 600px) {
+      .page { padding: 66px 16px 80px; }
+      .content { padding: 27px 19px; }
+      .memory-row { grid-template-columns: 1fr; gap: 9px; }
+      .memory { padding: 12px; }
+      .memory span { display: inline; margin-right: 8px; font-size: 1.8rem; }
+      .page-arrow { width: 38px; height: 38px; }
+      #prev { left: 8px; }
+      #next { right: 8px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
       }
     }
   </style>
 </head>
 <body>
+  <canvas id="confetti"></canvas>
 
-  <section class="page" id="page1">
-    <div class="content hero">
-      <div class="badge">For My Dearest Brother</div>
-      <h1 class="h1">Happy Birthday Brother🎂</h1>
-      <div class="subtitle">To the one who makes life brighter, stronger, Happy, and warmer.</div>
-      <div class="heart">❤</div><br>
-      <a href="#page2" class="cta">Click Here Bhiya😊</a>
-    </div>
-  </section>
+  <div class="page-count" id="pageCount">01 / 06</div>
+  <button class="page-arrow" id="prev" aria-label="Previous page">‹</button>
+  <button class="page-arrow" id="next" aria-label="Next page">›</button>
 
-  <section class="page" id="page2">
-    <div class="content section">
-      <div>
-        <h2>My Sweet Brother</h2>
-        <p>
-          Dear brother, every year with you feels like a blessing wrapped in love, laughter, and endless memories.
-          You are not just my brother; you are my strength, my smile, my calm, and my forever support.
-        </p>
-        <p>
-          I pray that your life keeps growing with happiness, peace, and success. May every dream you hold
-          come true, and every path you take be filled with light, courage, and joy.
-        </p>
-        <p>
-          On your birthday, I wish you a heart full of love, a mind full of dreams, and a soul full of peace.
-          May your days be as beautiful as your heart and as bright as your smile.
-        </p>
+  <main>
+    <!-- PAGE 1: GRAND OPENING -->
+    <section class="page active" id="page1">
+      <span class="sparkle" style="top:14%;left:13%;font-size:2rem">✦</span>
+      <span class="sparkle" style="top:22%;right:15%;font-size:1.6rem;animation-delay:.7s">✧</span>
+      <div class="content">
+        <div class="eyebrow">A special surprise is waiting</div>
+        <span class="emoji-big">🎁</span>
+        <h1>Happy Birthday,<br>Brother!</h1>
+        <p>Today is all about celebrating the amazing person you are.</p>
+        <button class="button" onclick="grandOpening()">🎉 Open Your Surprise</button>
       </div>
-      <div class="photo-card"></div>
-      <a href="#page3" class="cta" style="width: 100px;">Next</a>
-    </div>
-  </section>
+    </section>
 
-  <section class="page" id="page3">
-    <div class="content">
-      <h2 style="text-align:center; margin-bottom:18px;">Our Beautiful Brotherhood</h2>
-      <div class="timeline">
-        <div class="item">
-          <strong>Childhood</strong>
-          <span>You were my first partner, my playmate, and my constant companion.</span>
-        </div>
-        <div class="item">
-          <strong>Growing Up</strong>
-          <span>i wish that you will grow your life and get every success and always remember that  i am always with you. </span>
-        </div>
-        <div class="item">
-          <strong>Today</strong>
-          <span>You are the kind of brother everyone wishes for — loving, kind, and deeply caring.</span>
-        </div>
-        <div class="item">
-          <strong>Forever</strong>
-          <span>No matter how life changes, my love and respect for you will always remain.</span>
-        </div>
+    <!-- PAGE 2: THE CELEBRATION -->
+    <section class="page" id="page2">
+      <div class="content">
+        <div class="eyebrow">The party starts now</div>
+        <span class="emoji-big">🥳</span>
+        <h2>It’s Your Big Day!</h2>
+        <p>Today deserves extra cake, extra laughter, and all the happiness in the world. The best brother ever is one year more awesome!</p>
+        <button class="button" onclick="celebrate()">✨ Make It Rain Confetti</button>
+        <button class="button secondary" onclick="goTo(2)">Next surprise →</button>
       </div>
-      <br>
-       <a href="#page4" class="cta">Next</a>
-    </div>
-  </section>
+    </section>
 
-  <section class="page" id="page4">
-    <div class="content">
-      <h2 style="text-align:center;">A Birthday Wish for You</h2>
-      <div class="quote">
-        “May your life be full of laughter, your heart be full of peace, and your dreams be full of wings.
-         May every new day bring you closer to your goals and fill your soul with endless happiness.”
+    <!-- PAGE 3: BROTHER MEMORIES -->
+    <section class="page" id="page3">
+      <div class="content">
+        <div class="eyebrow">A few reasons you’re the best</div>
+        <h2>Brother, You’re One of a Kind</h2>
+        <p>Thanks for filling life with these unforgettable things:</p>
+        <div class="memory-row">
+          <div class="memory"><span>😂</span><strong>Endless laughs</strong><small>Even at my terrible jokes</small></div>
+          <div class="memory"><span>🤝</span><strong>Always being there</strong><small>My forever teammate</small></div>
+          <div class="memory"><span>🌟</span><strong>Being yourself</strong><small>Simply the best brother</small></div>
+        </div>
+        <button class="button" onclick="goTo(3)">A birthday wish →</button>
       </div>
+    </section>
 
-      <div class="wish-box">
-        <div class="wish">
-          <div class="icon">🌟</div>
-          <h3>Success</h3>
-          <p>May every effort you make turn into beautiful achievements.</p>
+    <!-- PAGE 4: WISHES -->
+    <section class="page" id="page4">
+      <div class="content">
+        <div class="eyebrow">Wishing you a year full of</div>
+        <h2>All the Good Things</h2>
+        <div class="wish-list">
+          <div class="wish">💫 Big dreams that come true</div>
+          <div class="wish">💪 New adventures and proud moments</div>
+          <div class="wish">❤️ Lots of love, laughter, and good health</div>
+          <div class="wish">🍕 Plenty of your favorite food!</div>
         </div>
-        <div class="wish">
-          <div class="icon">💖</div>
-          <h3>Love</h3>
-          <p>May your heart always be surrounded by affection and warmth.</p>
-        </div>
-        <div class="wish">
-          <div class="icon">✨</div>
-          <h3>Joy</h3>
-          <p>May your life be full of sweet moments and beautiful memories.</p>
-        </div>
+        <p>You deserve every bit of happiness headed your way.</p>
+        <button class="button" onclick="goTo(4)">Let’s cut the cake →</button>
       </div>
-      <br>
-       <a href="#page5" class="cta">Next</a>
-    </div>
-  </section>
+    </section>
 
-  <section class="page" id="page5">
-    <div class="content final">
-      <h2>Happy Birthday, Brother!</h2>
-      <div class="heart-big">❤</div>
-      <p style="font-size:1.1rem; line-height:1.8; color:#fff0f5;">
-        You are a rare blessing in my life. Thank you for being my brother, my friend, and my forever support.
-        I am proud of you, I love you, and I pray for your happiness always.
-      </p>
-      <div class="signature">With all my love, always — Your Brother</div><br><br>
-         <a href="#page1" class="cta" style="align-items: center;">Start Again</a>
-    </div>
-  </section>
- 
+    <!-- PAGE 5: CAKE CUTTING -->
+    <section class="page" id="page5">
+      <div class="content">
+        <div class="eyebrow">Make a wish!</div>
+        <h2>Cake-Cutting Time</h2>
+        <p>Close your eyes, make your biggest wish, and tap the button!</p>
+        <div class="cake-area">
+          <div class="cake" id="cake">
+            <div class="candle"><div class="flame"></div></div>
+            <div class="cake-top"></div>
+            <div class="cake-base"></div>
+          </div>
+        </div>
+        <button class="button" id="cutButton" onclick="cutCake()">🔪 Cut the Cake!</button>
+        <button class="button secondary" onclick="goTo(5)">One last message →</button>
+        <p id="cakeMessage" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <!-- PAGE 6: FINAL MESSAGE -->
+    <section class="page" id="page6">
+      <div class="content">
+        <div class="eyebrow">With lots of love</div>
+        <span class="emoji-big">🎂💖🎈</span>
+        <h2>Happy Birthday, Brother!</h2>
+        <div class="final-note">
+          I’m so lucky to have you as my brother. Keep being wonderful, keep smiling, and make this year your best one yet!
+        </div>
+        <p>Here’s to you and an incredible year ahead. Love you always! 🥂</p>
+        <button class="button" onclick="celebrate()">🎊 Celebrate Again</button>
+        <button class="button secondary" onclick="goTo(0)">↺ Start Again</button>
+      </div>
+    </section>
+  </main>
+
+  <nav class="dots" aria-label="Birthday pages">
+    <button class="dot active" aria-label="Go to page 1" onclick="goTo(0)"></button>
+    <button class="dot" aria-label="Go to page 2" onclick="goTo(1)"></button>
+    <button class="dot" aria-label="Go to page 3" onclick="goTo(2)"></button>
+    <button class="dot" aria-label="Go to page 4" onclick="goTo(3)"></button>
+    <button class="dot" aria-label="Go to page 5" onclick="goTo(4)"></button>
+    <button class="dot" aria-label="Go to page 6" onclick="goTo(5)"></button>
+  </nav>
+
+  <script>
+    const pages = [...document.querySelectorAll(".page")];
+    const dots = [...document.querySelectorAll(".dot")];
+    let currentPage = 0;
+
+    function goTo(index) {
+      currentPage = (index + pages.length) % pages.length;
+      pages.forEach((page, i) => page.classList.toggle("active", i === currentPage));
+      dots.forEach((dot, i) => dot.classList.toggle("active", i === currentPage));
+      document.getElementById("pageCount").textContent =
+        String(currentPage + 1).padStart(2, "0") + " / 06";
+    }
+
+    document.getElementById("next").addEventListener("click", () => goTo(currentPage + 1));
+    document.getElementById("prev").addEventListener("click", () => goTo(currentPage - 1));
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowRight") goTo(currentPage + 1);
+      if (event.key === "ArrowLeft") goTo(currentPage - 1);
+    });
+
+    function grandOpening() {
+      celebrate();
+      setTimeout(() => goTo(1), 550);
+    }
+
+    function cutCake() {
+      const cake = document.getElementById("cake");
+      const message = document.getElementById("cakeMessage");
+      cake.classList.add("cut");
+      message.textContent = "Wish made! Now enjoy a big slice! 🍰";
+      document.getElementById("cutButton").textContent = "🎉 Cake Cut!";
+      celebrate();
+    }
+
+    // Lightweight canvas confetti—no libraries required.
+    const canvas = document.getElementById("confetti");
+    const ctx = canvas.getContext("2d");
+    let pieces = [];
+    let animationFrame;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth * devicePixelRatio;
+      canvas.height = window.innerHeight * devicePixelRatio;
+      ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
+    }
+
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    function celebrate() {
+      const colors = ["#ff5d9e", "#ffd166", "#7ee8c5", "#9d83ff", "#ffffff"];
+      for (let i = 0; i < 180; i++) {
+        pieces.push({
+          x: Math.random() * window.innerWidth,
+          y: -20 - Math.random() * window.innerHeight * .5,
+          size: 5 + Math.random() * 8,
+          speed: 2 + Math.random() * 5,
+          drift: (Math.random() - .5) * 3,
+          angle: Math.random() * 6,
+          spin: (Math.random() - .5) * .2,
+          color: colors[Math.floor(Math.random() * colors.length)]
+        });
+      }
+      if (!animationFrame) animateConfetti();
+    }
+
+    function animateConfetti() {
+      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+      pieces = pieces.filter(piece => piece.y < window.innerHeight + 20);
+
+      for (const piece of pieces) {
+        piece.y += piece.speed;
+        piece.x += piece.drift;
+        piece.angle += piece.spin;
+        ctx.save();
+        ctx.translate(piece.x, piece.y);
+        ctx.rotate(piece.angle);
+        ctx.fillStyle = piece.color;
+        ctx.fillRect(-piece.size / 2, -piece.size / 2, piece.size, piece.size * .65);
+        ctx.restore();
+      }
+
+      if (pieces.length) {
+        animationFrame = requestAnimationFrame(animateConfetti);
+      } else {
+        animationFrame = null;
+        ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+      }
+    }
+  </script>
 </body>
 </html>
