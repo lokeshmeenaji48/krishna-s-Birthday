@@ -1,331 +1,1246 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#210d20" />
-  <title>For My Little Brother | Birthday Surprise</title>
-  <style>
-    :root{
-      --bg:#170b1c;
-      --pink:#ff8fb8;
-      --rose:#ffb6cb;
-      --cream:#fff0e8;
-      --gold:#f5d49a;
-      --muted:#e8cbd9;
-      --glass:rgba(255,255,255,.085);
-      --line:rgba(255,255,255,.16);
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0; min-height:100vh; color:var(--cream);
-      font-family:Georgia,"Times New Roman",serif;
-      background:
-        radial-gradient(circle at 15% 18%,rgba(255,105,160,.18),transparent 29%),
-        radial-gradient(circle at 85% 78%,rgba(155,91,190,.2),transparent 30%),
-        linear-gradient(135deg,#170b1c,#2a1028 48%,#160d25);
-      overflow:hidden;
-    }
-    body:before,body:after{
-      content:"";position:fixed;inset:-20%;pointer-events:none;z-index:0;
-      background-image:radial-gradient(2px 2px at 20% 30%,#fff 45%,transparent 55%),radial-gradient(1.5px 1.5px at 70% 20%,#ffd6e5 45%,transparent 55%),radial-gradient(2px 2px at 82% 65%,#fff 45%,transparent 55%),radial-gradient(1px 1px at 38% 82%,#ffd6e5 45%,transparent 55%);
-      background-size:290px 240px;opacity:.45;animation:twinkle 7s ease-in-out infinite alternate;
-    }
-    body:after{transform:translate(45px,35px);opacity:.22;animation-duration:11s}
-    @keyframes twinkle{from{opacity:.18;transform:translateY(0)}to{opacity:.58;transform:translateY(-12px)}}
-    .app{position:relative;z-index:1;min-height:100svh;display:flex;flex-direction:column}
-    .topbar{width:min(100%,1050px);margin:0 auto;padding:20px 22px 0;display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .brand{font:600 11px/1.2 Arial,sans-serif;letter-spacing:3px;text-transform:uppercase;color:#f8c8d9;opacity:.9}
-    .counter{font:12px Arial,sans-serif;letter-spacing:2px;color:#e8cada}
-    .progress{width:min(100%,1050px);height:3px;margin:14px auto 0;padding:0 22px;display:flex;gap:5px}
-    .progress span{height:3px;flex:1;border-radius:10px;background:rgba(255,255,255,.16);transition:background .4s,box-shadow .4s}
-    .progress span.done{background:linear-gradient(90deg,#ff8fb8,#f5d49a);box-shadow:0 0 12px rgba(255,143,184,.55)}
-    main{flex:1;display:grid;place-items:center;padding:22px 18px 28px}
-    .page{display:none;width:min(100%,900px);min-height:min(710px,calc(100svh - 125px));align-items:center;justify-content:center;text-align:center;animation:pageIn .75s cubic-bezier(.2,.75,.25,1) both}
-    .page.active{display:flex}
-    .page.exit{animation:pageOut .25s ease both}
-    @keyframes pageIn{from{opacity:0;transform:translateY(24px) scale(.985);filter:blur(7px)}to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}
-    @keyframes pageOut{to{opacity:0;transform:translateY(-10px) scale(.99);filter:blur(4px)}}
-    .panel{width:100%;padding:clamp(24px,5vw,54px);border:1px solid var(--line);border-radius:30px;background:linear-gradient(145deg,rgba(255,255,255,.105),rgba(255,255,255,.035));box-shadow:0 25px 90px rgba(0,0,0,.28),inset 0 1px rgba(255,255,255,.1);backdrop-filter:blur(14px);}
-    .eyebrow{font:11px Arial,sans-serif;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin:0 0 18px}
-    h1,h2,p{margin-top:0}
-    h1{font-size:clamp(38px,8vw,76px);line-height:1.05;letter-spacing:-2px;margin-bottom:20px;color:#fff0f4;text-shadow:0 4px 30px rgba(255,121,174,.22)}
-    h2{font-size:clamp(30px,6vw,52px);line-height:1.1;margin-bottom:18px;color:#ffe5ed}
-    .script{font-style:italic;color:#ffc2d7}
-    .poem{font-size:clamp(18px,2.7vw,25px);line-height:1.85;color:#fbeaf0;margin:18px auto 0;max-width:650px;white-space:pre-line}
-    .poem .gold{color:var(--gold)}
-    .heart{display:inline-block;color:#ff8fb8;text-shadow:0 0 22px rgba(255,95,150,.75);animation:heartbeat 1.8s ease-in-out infinite}
-    @keyframes heartbeat{0%,100%{transform:scale(1)}12%{transform:scale(1.16)}24%{transform:scale(1)}36%{transform:scale(1.1)}}
-    .orb{width:110px;height:110px;border-radius:50%;margin:0 auto 28px;display:grid;place-items:center;font-size:44px;background:radial-gradient(circle at 35% 30%,#ffd9e6,#d85f97 48%,#71306e 80%);box-shadow:0 0 25px rgba(255,116,169,.5),0 0 80px rgba(222,87,157,.2);animation:float 4s ease-in-out infinite}
-    @keyframes float{50%{transform:translateY(-10px)}}
-    .btnrow{display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap;margin-top:32px}
-    button{border:0;cursor:pointer;border-radius:99px;padding:14px 25px;font:600 13px Arial,sans-serif;letter-spacing:1px;transition:transform .2s,box-shadow .2s,background .2s}
-    button:hover{transform:translateY(-3px)}
-    button:focus-visible{outline:3px solid #fff;outline-offset:4px}
-    .primary{color:#351426;background:linear-gradient(120deg,#ffd4e2,#f3c98c);box-shadow:0 8px 28px rgba(239,145,174,.25)}
-    .secondary{color:#ffe4ee;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2)}
-    .tiny-note{font:11px/1.6 Arial,sans-serif;color:#d9bdce;letter-spacing:1px;margin-top:22px}
-    .photo-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(230px,.82fr);align-items:center;gap:clamp(22px,5vw,48px);text-align:left}
-    .photo-frame{position:relative;width:100%;max-width:340px;margin:auto;padding:10px;border-radius:24px;background:linear-gradient(145deg,#ffe1e9,#d891b5,#f5d49a);box-shadow:0 18px 55px rgba(0,0,0,.35);transform:rotate(-2deg)}
-    .photo-frame img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:17px;background:#3b2039}
-    .photo-placeholder{display:none;aspect-ratio:4/5;border-radius:17px;background:linear-gradient(145deg,#59304f,#25142d);place-items:center;padding:20px;text-align:center;color:#f7dbe6;font:13px/1.8 Arial,sans-serif}
-    .photo-caption{font:11px Arial,sans-serif;letter-spacing:3px;color:#f4d3a2;text-transform:uppercase;margin-top:15px;text-align:center}
-    .photo-copy h2{font-size:clamp(29px,5vw,47px)}
-    .photo-copy .poem{font-size:clamp(17px,2.2vw,22px);margin-left:0}
-    .wish-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:28px auto 0;max-width:700px}
-    .wish{padding:20px 16px;border:1px solid rgba(255,255,255,.13);border-radius:20px;background:rgba(255,255,255,.055);font-size:clamp(16px,2vw,20px);line-height:1.7;color:#ffeaf1}
-    .wish span{display:block;color:var(--gold);font-size:20px;margin-bottom:8px}
-    .signature{font:italic 18px Georgia,serif;color:#ffc2d7;margin-top:28px}
-    .bottomnav{width:min(100%,1050px);margin:0 auto;padding:0 22px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px}
-    .navhint{font:10px Arial,sans-serif;letter-spacing:1.6px;color:#c9aebe;text-transform:uppercase}
-    .navbtn{padding:11px 17px;font-size:11px}
-    .hidden{visibility:hidden;pointer-events:none}
-    .floating-heart{position:fixed;bottom:-35px;z-index:0;color:rgba(255,161,194,.28);font-size:20px;pointer-events:none;animation:rise linear forwards}
-    @keyframes rise{to{transform:translateY(-110vh) rotate(25deg);opacity:0}}
-    @media(max-width:680px){
-      .topbar{padding-top:15px}.progress{margin-top:11px}
-      main{padding:17px 13px 22px}.page{min-height:calc(100svh - 112px)}
-      .panel{padding:25px 19px;border-radius:24px}
-      .photo-layout{grid-template-columns:1fr;gap:23px;text-align:center}
-      .photo-frame{max-width:245px}.photo-frame img,.photo-placeholder{aspect-ratio:1/1.08}
-      .photo-copy .poem{margin-left:auto}
-      .wish-grid{grid-template-columns:1fr;gap:10px;margin-top:20px}
-      .wish{padding:14px 12px}.bottomnav{padding-bottom:12px}.navhint{font-size:9px}
-      button{padding:13px 19px}
-    }
-    @media(max-height:700px) and (min-width:681px){.page{min-height:560px}.panel{padding:25px}.photo-frame{max-width:250px}.photo-frame img,.photo-placeholder{aspect-ratio:4/3}}
-    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#210d20">
 
-    #music-btn{
-    position:fixed;
-    right:15px;
-    top:10px;
-    z-index:50;
-    background:#66243c;
-    color:white;
-    border:1px solid gold;
-    padding:6px 10px;
-    border-radius:30px;
-    cursor:pointer;
-    }
-    
-  </style>
+<title>For My Little Brother ❤️</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Hand+Pre:wght@400..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+
+
+<style>
+:root{
+  --bg:#170b1c;
+  --pink:#ff8fb8;
+  --rose:#ffb6cb;
+  --cream:#fff0e8;
+  --gold:#f5d49a;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+    font-family: "Ubuntu", sans-serif;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  min-height:100vh;
+  color:var(--cream);
+  font-family:Georgia,"Times New Roman",serif;
+
+  background:
+  radial-gradient(circle at 15% 18%,rgba(255,105,160,.18),transparent 29%),
+  radial-gradient(circle at 85% 78%,rgba(155,91,190,.2),transparent 30%),
+  linear-gradient(135deg,#170b1c,#2a1028 48%,#160d25);
+
+  overflow:hidden;
+}
+
+/* STAR EFFECT */
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:-20%;
+  pointer-events:none;
+  z-index:0;
+
+  background-image:
+  radial-gradient(2px 2px at 20% 30%,#fff 45%,transparent 55%),
+  radial-gradient(1.5px 1.5px at 70% 20%,#ffd6e5 45%,transparent 55%),
+  radial-gradient(2px 2px at 82% 65%,#fff 45%,transparent 55%),
+  radial-gradient(1px 1px at 38% 82%,#ffd6e5 45%,transparent 55%);
+
+  background-size:290px 240px;
+  opacity:.45;
+  animation:twinkle 7s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle{
+  from{opacity:.18}
+  to{opacity:.58}
+}
+
+.app{
+  position:relative;
+  z-index:1;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+/* TOP */
+
+.topbar{
+  width:min(100%,1050px);
+  margin:auto;
+  padding:20px 22px 0;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.brand{
+  font:600 11px Arial,sans-serif;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:#f8c8d9;
+}
+
+.counter{
+  font:12px Arial,sans-serif;
+  letter-spacing:2px;
+}
+
+/* PROGRESS */
+
+.progress{
+  width:min(100%,1050px);
+  height:3px;
+  margin:14px auto 0;
+  padding:0 22px;
+
+  display:flex;
+  gap:5px;
+}
+
+.progress span{
+  height:3px;
+  flex:1;
+  border-radius:10px;
+  background:rgba(255,255,255,.16);
+  transition:.4s;
+}
+
+.progress span.done{
+  background:linear-gradient(90deg,#ff8fb8,#f5d49a);
+  box-shadow:0 0 12px rgba(255,143,184,.55);
+}
+
+/* PAGES */
+
+main{
+  flex:1;
+  display:grid;
+  place-items:center;
+  padding:22px 18px 28px;
+}
+
+.page{
+  display:none;
+
+  width:min(100%,900px);
+  min-height:min(710px,calc(100vh - 125px));
+
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+
+  animation:pageIn .75s cubic-bezier(.2,.75,.25,1);
+}
+
+.page.active{
+  display:flex;
+}
+
+@keyframes pageIn{
+  from{
+    opacity:0;
+    transform:translateY(24px) scale(.985);
+    filter:blur(7px);
+  }
+
+  to{
+    opacity:1;
+    transform:none;
+    filter:blur(0);
+  }
+}
+
+/* PANEL */
+
+.panel{
+  width:100%;
+
+  padding:clamp(24px,5vw,54px);
+
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:30px;
+
+  background:
+  linear-gradient(
+    145deg,
+    rgba(255,255,255,.105),
+    rgba(255,255,255,.035)
+  );
+
+  box-shadow:
+  0 25px 90px rgba(0,0,0,.28),
+  inset 0 1px rgba(255,255,255,.1);
+
+  backdrop-filter:blur(14px);
+}
+
+/* TEXT */
+
+.eyebrow{
+  font:11px Arial,sans-serif;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:18px;
+}
+
+h1{
+  font-size:clamp(38px,8vw,76px);
+  line-height:1.05;
+  letter-spacing:-2px;
+  margin-bottom:20px;
+  color:#fff0f4;
+
+  text-shadow:
+  0 4px 30px rgba(255,121,174,.22);
+}
+
+h2{
+  font-size:clamp(30px,6vw,52px);
+  line-height:1.1;
+  margin-bottom:18px;
+}
+
+.script{
+  font-style:italic;
+  color:#ffc2d7;
+}
+
+.poem{
+  font-size:clamp(18px,2.7vw,25px);
+  line-height:1.9;
+
+  color:#fbeaf0;
+
+  margin:18px auto 0;
+  max-width:680px;
+
+  white-space:pre-line;
+}
+
+.heart{
+  color:#ff8fb8;
+  text-shadow:0 0 22px rgba(255,95,150,.75);
+
+  animation:heartbeat 1.8s infinite;
+}
+
+@keyframes heartbeat{
+  0%,100%{transform:scale(1)}
+  12%{transform:scale(1.16)}
+  24%{transform:scale(1)}
+  36%{transform:scale(1.1)}
+}
+
+/* ORB */
+
+.orb{
+  width:110px;
+  height:110px;
+
+  border-radius:50%;
+
+  margin:0 auto 28px;
+
+  display:grid;
+  place-items:center;
+
+  font-size:44px;
+
+  background:
+  radial-gradient(
+    circle at 35% 30%,
+    #ffd9e6,
+    #d85f97 48%,
+    #71306e 80%
+  );
+
+  box-shadow:
+  0 0 25px rgba(255,116,169,.5),
+  0 0 80px rgba(222,87,157,.2);
+
+  animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+  50%{transform:translateY(-10px)}
+}
+
+/* BUTTON */
+
+.btnrow{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  gap:12px;
+  flex-wrap:wrap;
+
+  margin-top:32px;
+}
+
+button{
+  border:0;
+  cursor:pointer;
+
+  border-radius:99px;
+
+  padding:14px 25px;
+
+  font:600 13px Arial,sans-serif;
+  letter-spacing:1px;
+
+  transition:.2s;
+}
+
+button:hover{
+  transform:translateY(-3px);
+}
+
+.primary{
+  color:#351426;
+
+  background:
+  linear-gradient(120deg,#ffd4e2,#f3c98c);
+
+  box-shadow:
+  0 8px 28px rgba(239,145,174,.25);
+}
+
+.secondary{
+  color:#ffe4ee;
+
+  background:rgba(255,255,255,.08);
+
+  border:1px solid rgba(255,255,255,.2);
+}
+
+/* PHOTO */
+
+.photo-layout{
+  display:grid;
+
+  grid-template-columns:
+  minmax(0,1fr)
+  minmax(230px,.82fr);
+
+  align-items:center;
+
+  gap:clamp(22px,5vw,48px);
+
+  text-align:left;
+}
+
+.photo-frame{
+  position:relative;
+
+  width:100%;
+  max-width:340px;
+
+  margin:auto;
+
+  padding:10px;
+
+  border-radius:24px;
+
+  background:
+  linear-gradient(
+    145deg,
+    #ffe1e9,
+    #d891b5,
+    #f5d49a
+  );
+
+  box-shadow:
+  0 18px 55px rgba(0,0,0,.35);
+
+  transform:rotate(-2deg);
+}
+
+.photo-frame img{
+  display:block;
+
+  width:100%;
+
+  aspect-ratio:4/5;
+
+  object-fit:cover;
+
+  border-radius:17px;
+
+  background:#3b2039;
+}
+
+.photo-caption{
+  font:11px Arial,sans-serif;
+
+  letter-spacing:3px;
+
+  color:#f4d3a2;
+
+  text-transform:uppercase;
+
+  margin-top:15px;
+
+  text-align:center;
+}
+
+.photo-copy h2{
+  font-size:clamp(29px,5vw,47px);
+}
+
+.photo-copy .poem{
+  font-size:clamp(17px,2.2vw,22px);
+  margin-left:0;
+}
+
+/* WISHES */
+
+.wish-grid{
+  display:grid;
+
+  grid-template-columns:
+  repeat(2,minmax(0,1fr));
+
+  gap:14px;
+
+  margin:28px auto 0;
+
+  max-width:700px;
+}
+
+.wish{
+  padding:20px 16px;
+
+  border:1px solid rgba(255,255,255,.13);
+
+  border-radius:20px;
+
+  background:rgba(255,255,255,.055);
+
+  font-size:clamp(16px,2vw,20px);
+
+  line-height:1.7;
+}
+
+.wish span{
+  display:block;
+
+  color:var(--gold);
+
+  font-size:20px;
+
+  margin-bottom:8px;
+}
+
+.signature{
+  font:italic 18px Georgia,serif;
+
+  color:#ffc2d7;
+
+  margin-top:28px;
+}
+
+/* BOTTOM NAV */
+
+.bottomnav{
+  width:min(100%,1050px);
+
+  margin:auto;
+
+  padding:0 22px 18px;
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  gap:12px;
+}
+
+.navhint{
+  font:10px Arial,sans-serif;
+  letter-spacing:1.6px;
+
+  color:#c9aebe;
+
+  text-transform:uppercase;
+}
+
+.navbtn{
+  padding:11px 17px;
+  font-size:11px;
+}
+
+.hidden{
+  visibility:hidden;
+  pointer-events:none;
+}
+
+/* FLOATING HEARTS */
+
+.floating-heart{
+  position:fixed;
+
+  bottom:-35px;
+
+  z-index:5;
+
+  color:rgba(255,161,194,.7);
+
+  font-size:20px;
+
+  pointer-events:none;
+
+  animation:rise linear forwards;
+}
+
+@keyframes rise{
+  to{
+    transform:
+    translateY(-110vh)
+    rotate(25deg);
+
+    opacity:0;
+  }
+}
+
+/* MOBILE */
+
+@media(max-width:680px){
+
+  .topbar{
+    padding-top:15px;
+  }
+
+  main{
+    padding:17px 13px 22px;
+  }
+
+  .page{
+    min-height:calc(100vh - 112px);
+  }
+
+  .panel{
+    padding:25px 19px;
+    border-radius:24px;
+  }
+
+  .photo-layout{
+    grid-template-columns:1fr;
+    gap:23px;
+    text-align:center;
+  }
+
+  .photo-frame{
+    max-width:245px;
+  }
+
+  .photo-copy .poem{
+    margin-left:auto;
+  }
+
+  .wish-grid{
+    grid-template-columns:1fr;
+  }
+
+  .bottomnav{
+    padding-bottom:12px;
+  }
+
+  button{
+    padding:13px 19px;
+  }
+}
+</style>
 </head>
+
+
 <body>
-  
-<audio id="birthdayMusic" src="Birthday.mp3" loop preload="auto"></audio>
 
-<button id="musicBtn" onclick="toggleMusic()" aria-label="Toggle music">♫</button>
 <div class="app">
-  <header class="topbar">
-    <div class="brand">A little surprise · made with love</div>
-    <div class="counter" id="counter">01 / 06</div>
-  </header>
-  <div class="progress" id="progress" aria-label="Birthday surprise progress">
-    <span class="done"></span><span></span><span></span><span></span><span></span><span></span>
-  </div>
 
-  <main>
-    <!-- PAGE 1: MYSTERY OPENING -->
-    <section class="page active" aria-label="Mystery opening">
-      <div class="panel">
-        <div class="orb">✉️</div>
-        <p class="eyebrow">A secret is waiting for you</p>
-        <h1>Ek chhota sa<br><span class="script">raaz...</span></h1>
-        <div class="poem">Kuch lafz hain, jo dil se aaye hain,
-Kuch pal hain, jo tere naam sajaye hain…
-Aaj ka din zara khaas hone wala hai,
-Kyunki tere liye humne sitare chhupaye hain. <span class="heart">♥</span></div>
-        <div class="btnrow"><button class="primary" onclick="goTo(1)">SURPRISE KHOLO ✨</button></div>
-        <div class="tiny-note">Tap to begin your little birthday journey</div>
-      </div>
-    </section>
+<header class="topbar">
 
-    <!-- PAGE 2: REVEAL -->
-    <section class="page" aria-label="Birthday reveal">
-      <div class="panel">
-        <p class="eyebrow">The secret is finally out</p>
-        <div class="orb">🎂</div>
-        <h1>Happy Birthday<br><span class="script">mere chhote bhai!</span></h1>
-        <div class="poem">Teri muskaan se ghar mein bahaar rehti hai,
-Teri shararaton se har shaam gulzaar rehti hai.
-Tu yunhi hasta rahe, chamakta rahe har saal,
-Teri khushiyon se hi apni duniya aabaad rehti hai. <span class="heart">♥</span></div>
-        <div class="btnrow"><button class="primary" onclick="goTo(2)">YAADON KI TARAF 📸</button></div>
-      </div>
-    </section>
-
-    <!-- PAGE 3: PHOTO ONE -->
-    <section class="page" aria-label="First memory photo">
-      <div class="panel">
-        <div class="photo-layout">
-          <div class="photo-frame">
-            <img src="memory1.jpg" alt="First favourite memory with my little brother" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'" />
-            <div class="photo-placeholder">📷<br>Yahan apni pehli photo rakho<br><small>memory1.jpg</small></div>
-            <div class="photo-caption">A memory to keep forever</div>
-          </div>
-          <div class="photo-copy">
-            <p class="eyebrow">Yaadon ka pehla panna</p>
-            <h2>Woh pal bhi<br><span class="script">khaas the…</span></h2>
-            <div class="poem">Tasveer mein qaid hai ek pyaari si kahaani,
-Bachpan ki masti aur apni dosti puraani.
-Waqt badle, din badlein, badle chahe jahaan,
-Bhai tu rahega hamesha dil ke sabse paas. <span class="heart">♥</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PAGE 4: PHOTO TWO -->
-    <section class="page" aria-label="Second memory photo">
-      <div class="panel">
-        <div class="photo-layout">
-          <div class="photo-frame">
-            <img src="memory2.jpg" alt="Second favourite memory with my little brother" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'" />
-            <div class="photo-placeholder">📷<br>Yahan apni doosri photo rakho<br><small>memory2.jpg</small></div>
-            <div class="photo-caption">Another little forever</div>
-          </div>
-          <div class="photo-copy">
-            <p class="eyebrow">Yaadon ka doosra panna</p>
-            <h2>Tu saath ho toh<br><span class="script">sab achha lage…</span></h2>
-            <div class="poem">Kabhi nok-jhok, kabhi hasi ka bahaana,
-Tere bina adhoora lage har afsaana.
-Rab se bas itni si dua har baar karun,
-Tere har kal ko khushiyon se roshan karun. <span class="heart">♥</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PAGE 5: BIRTHDAY SHAYARI & WISHES -->
-    <section class="page" aria-label="Birthday wishes">
-      <div class="panel">
-        <p class="eyebrow">Dil se nikli kuch duayein</p>
-        <h2>Tere naam <span class="script">yeh dua…</span></h2>
-        <div class="poem">Har subah tere liye nayi umeed laaye,
-Har raasta tujhe manzil ke kareeb le jaaye.
-Tere chehre ki hansi kabhi kam na ho,
-Teri zindagi mein khushiyon ke phool khilte jaayein. <span class="heart">♥</span></div>
-        <div class="wish-grid">
-          <div class="wish"><span>✦</span>Har sapna tera sach ho,<br>har din tera khoobsurat ho.</div>
-          <div class="wish"><span>✦</span>Himmat tere saath rahe,<br>khushiyaan tere paas rahein.</div>
-          <div class="wish"><span>✦</span>Tu hamesha hasta rahe,<br>apni pehchaan banata rahe.</div>
-          <div class="wish"><span>✦</span>Umar ke har mod par,<br>tera naseeb roshan rahe.</div>
-        </div>
-        <div class="signature">Dher saara pyaar — tere bade bhai ki taraf se ❤️</div>
-        <div class="btnrow"><button class="primary" onclick="goTo(5)">A DAY TO REMEMBER ✨</button></div>
-      </div>
-    </section>
-
-    <!-- PAGE 6: ENDING -->
-    <section class="page" aria-label="Birthday surprise ending">
-      <div class="panel">
-        <div class="orb">💗</div>
-        <p class="eyebrow">The end… but love never ends</p>
-        <h1>Phir se ek baar…<br><span class="script">Happy Birthday!</span></h1>
-        <div class="poem">Chhota hai tu, par khushiyon ka khazaana hai,
-Mere har kal mein tera bhi ek afsaana hai.
-Bas yunhi muskurata reh, mere bhai,
-Tu sirf rishta nahi — mera pyaara sa jahaan hai. <span class="heart">♥</span></div>
-        <div class="btnrow">
-          <button class="primary" onclick="celebrate()">A LITTLE MORE MAGIC ✨</button>
-          <button class="secondary" onclick="goTo(0)">REPLAY SURPRISE ↺</button>
-        </div>
-        <div class="tiny-note">Made especially for my little brother · With all my love</div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="bottomnav">
-    <button class="secondary navbtn" id="prevBtn" onclick="goTo(currentPage-1)">← BACK</button>
-    <div class="navhint">A journey made of memories & love</div>
-    <button class="secondary navbtn" id="nextBtn" onclick="goTo(currentPage+1)">NEXT →</button>
-  </footer>
+<div class="brand">
+A Little Surprise · Made With Love
 </div>
 
+<div class="counter" id="counter">
+01 / 06
+</div>
+
+</header>
+
+
+<div class="progress" id="progress">
+
+<span class="done"></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+
+</div>
+
+
+<!-- ========================= -->
+<!-- MUSIC -->
+<!-- ========================= -->
+
+<audio id="birthdayMusic"
+       src="Birthday.mp3"
+       loop
+       preload="auto">
+</audio>
+
+
+<main>
+
+
+<!-- PAGE 1 -->
+
+<section class="page active">
+
+<div class="panel">
+
+<div class="orb">
+✉️
+</div>
+
+<p class="eyebrow">
+A Secret Is Waiting For You
+</p>
+
+<h1>
+Ek chhota sa<br>
+<span class="script">raaz...</span>
+</h1>
+
+<div class="poem">
+
+Kuch lafz hain, jo dil se aaye hain,
+
+Kuch pal hain, jo tere naam sajaye hain…
+
+Aaj ka din zara khaas hone wala hai,
+
+Kyunki tere liye humne sitare chhupaye hain. ❤️
+
+</div>
+
+<div class="btnrow">
+
+<button class="primary"
+onclick="startMusic();goTo(1)">
+SURPRISE KHOLO ✨
+</button>
+
+</div>
+<br />
+<div class="tiny-note">
+Tap to begin your little birthday journey
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- PAGE 2 -->
+
+<section class="page">
+
+<div class="panel">
+
+<p class="eyebrow">
+The Secret Is Finally Out
+</p>
+
+<div class="orb">
+🎂
+</div>
+
+<h1>
+
+Happy Birthday<br>
+
+<span class="script">
+mere chhote bhai!
+</span>
+
+</h1>
+
+<div class="poem">
+
+Teri muskaan se ghar mein bahaar rehti hai,
+
+Teri shararaton se har shaam gulzaar rehti hai.
+
+Tu yunhi hasta rahe, chamakta rahe har saal,
+
+Teri khushiyon se hi apni duniya aabaad rehti hai. ❤️
+
+</div>
+
+<div class="btnrow">
+
+<button class="primary"
+onclick="goTo(2)">
+YAADON KI TARAF 📸
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- PAGE 3 PHOTO 1 -->
+
+<section class="page">
+
+<div class="panel">
+
+<div class="photo-layout">
+
+<div class="photo-frame">
+
+<img src="memory1.jpg"
+alt="Brother memory">
+
+<div class="photo-caption">
+A Memory To Keep Forever
+</div>
+
+</div>
+
+
+<div class="photo-copy">
+
+<p class="eyebrow">
+Yaadon Ka Pehla Panna
+</p>
+
+<h2>
+
+Woh pal bhi<br>
+
+<span class="script">
+khaas the…
+</span>
+
+</h2>
+
+
+<div class="poem">
+
+Tasveer mein qaid hai ek pyaari si kahaani,
+
+Bachpan ki masti aur apni dosti puraani.
+
+Waqt badle, din badlein, badle chahe jahaan,
+
+Bhai tu rahega hamesha dil ke sabse paas. ❤️
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- PAGE 4 PHOTO 2 -->
+
+<section class="page">
+
+<div class="panel">
+
+<div class="photo-layout">
+
+<div class="photo-frame">
+
+<img src="memory2.jpg"
+alt="Brother second memory">
+
+<div class="photo-caption">
+Another Little Forever
+</div>
+
+</div>
+
+
+<div class="photo-copy">
+
+<p class="eyebrow">
+Yaadon Ka Doosra Panna
+</p>
+
+<h2>
+
+Tu saath ho toh<br>
+
+<span class="script">
+sab achha lage…
+</span>
+
+</h2>
+
+
+<div class="poem">
+
+Kabhi nok-jhok, kabhi hasi ka bahaana,
+
+Tere bina adhoora lage har afsaana.
+
+Rab se bas itni si dua har baar karun,
+
+Tere har kal ko khushiyon se roshan karun. ❤️
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- PAGE 5 -->
+
+<section class="page">
+
+<div class="panel">
+
+<p class="eyebrow">
+Dil Se Nikli Kuch Duayein
+</p>
+
+<h2>
+
+Tere naam
+
+<span class="script">
+yeh dua…
+</span>
+
+</h2>
+
+
+<div class="poem">
+
+Har subah tere liye nayi umeed laaye,
+
+Har raasta tujhe manzil ke kareeb le jaaye.
+
+Tere chehre ki hansi kabhi kam na ho,
+
+Teri zindagi mein khushiyon ke phool khilte jaayein. ❤️
+
+</div>
+
+
+<div class="wish-grid">
+
+<div class="wish">
+
+<span>✦</span>
+
+Har sapna tera sach ho,
+
+har din tera khoobsurat ho.
+
+</div>
+
+
+<div class="wish">
+
+<span>✦</span>
+
+Himmat tere saath rahe,
+
+khushiyaan tere paas rahein.
+
+</div>
+
+
+<div class="wish">
+
+<span>✦</span>
+
+Tu hamesha hasta rahe,
+
+apni pehchaan banata rahe.
+
+</div>
+
+
+<div class="wish">
+
+<span>✦</span>
+
+Umar ke har mod par,
+
+tera naseeb roshan rahe.
+
+</div>
+
+</div>
+
+
+<div class="signature">
+
+Dher saara pyaar — tere bade bhai ki taraf se ❤️
+
+</div>
+
+<div class="btnrow">
+
+<button class="primary"
+onclick="goTo(5)">
+FINAL SURPRISE ✨
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- PAGE 6 -->
+
+<section class="page">
+
+<div class="panel">
+
+<div class="orb">
+💗
+</div>
+
+<p class="eyebrow">
+The End… But Love Never Ends
+</p>
+
+<h1>
+
+Phir se ek baar…
+
+<br>
+
+<span class="script">
+Happy Birthday!
+</span>
+
+</h1>
+
+
+<div class="poem">
+
+Chhota hai tu, par khushiyon ka khazaana hai,
+
+Mere har kal mein tera bhi ek afsaana hai.
+
+Bas yunhi muskurata reh, mere bhai,
+
+Tu sirf rishta nahi — mera pyaara sa jahaan hai. ❤️
+
+</div>
+
+
+<div class="btnrow">
+
+<button class="primary"
+onclick="celebrate()">
+
+A LITTLE MORE MAGIC ✨
+
+</button>
+
+
+<button class="secondary"
+onclick="goTo(0)">
+
+REPLAY SURPRISE ↺
+
+</button>
+
+</div>
+
+<br />
+<div class="tiny-note">
+
+Made especially for my little brother · With all my love ❤️
+
+</div>
+
+</div>
+
+</section>
+
+
+</main>
+
+
+
+<footer class="bottomnav">
+
+<button class="secondary navbtn"
+id="prevBtn"
+onclick="goTo(currentPage-1)">
+
+← BACK
+
+</button>
+
+
+<div class="navhint">
+
+A Journey Made Of Memories & Love
+
+</div>
+
+
+<button class="secondary navbtn"
+id="nextBtn"
+onclick="goTo(currentPage+1)">
+
+NEXT →
+
+</button>
+
+</footer>
+
+</div>
+
+
+
 <script>
-  const pages = Array.from(document.querySelectorAll('.page'));
-  const progressBars = Array.from(document.querySelectorAll('#progress span'));
-  const counter = document.getElementById('counter');
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
-  let currentPage = 0;
-  let isAnimating = false;
 
-  function updateNavigation(){
-    counter.textContent = `${String(currentPage+1).padStart(2,'0')} / ${String(pages.length).padStart(2,'0')}`;
-    progressBars.forEach((bar,index)=>bar.classList.toggle('done',index<=currentPage));
-    prevBtn.classList.toggle('hidden',currentPage===0);
-    nextBtn.classList.toggle('hidden',currentPage===pages.length-1);
-  }
+const pages =
+Array.from(document.querySelectorAll('.page'));
 
-  function goTo(index){
-    if(index<0 || index>=pages.length || index===currentPage || isAnimating) return;
-    isAnimating = true;
-    const oldPage = pages[currentPage];
-    oldPage.classList.add('exit');
-    window.setTimeout(()=>{
-      oldPage.classList.remove('active','exit');
-      currentPage = index;
-      pages[currentPage].classList.add('active');
-      updateNavigation();
-      isAnimating = false;
-      window.scrollTo({top:0,behavior:'smooth'});
+const progressBars =
+Array.from(document.querySelectorAll('#progress span'));
+
+const counter =
+document.getElementById('counter');
+
+const prevBtn =
+document.getElementById('prevBtn');
+
+const nextBtn =
+document.getElementById('nextBtn');
+
+const music =
+document.getElementById('birthdayMusic');
+
+let currentPage = 0;
+
+
+/* =========================
+   MUSIC AUTOPLAY
+========================= */
+
+function startMusic(){
+
+    music.volume = 0.45;
+
+    const playPromise = music.play();
+
+    if(playPromise !== undefined){
+
+        playPromise.catch(() => {
+
+            console.log(
+              "Browser blocked autoplay. Music will start on first interaction."
+            );
+
+        });
+
+    }
+
+}
+
+
+/*
+Try immediately when website loads.
+Some mobile browsers may block this.
+*/
+
+window.addEventListener("load", () => {
+
+    startMusic();
+
+});
+
+
+/*
+First touch/click will start music
+if browser blocked initial autoplay.
+*/
+
+document.addEventListener(
+"click",
+startMusic,
+{once:true}
+);
+
+
+/* =========================
+   PAGE NAVIGATION
+========================= */
+
+function updateNavigation(){
+
+    counter.textContent =
+    `${String(currentPage+1).padStart(2,'0')} / 06`;
+
+    progressBars.forEach(
+    (bar,index) => {
+
+        bar.classList.toggle(
+        'done',
+        index <= currentPage
+        );
+
+    });
+
+
+    prevBtn.classList.toggle(
+    'hidden',
+    currentPage === 0
+    );
+
+    nextBtn.classList.toggle(
+    'hidden',
+    currentPage === pages.length-1
+    );
+
+}
+
+
+function goTo(index){
+
+    if(
+      index < 0 ||
+      index >= pages.length ||
+      index === currentPage
+    ) return;
+
+
+    const oldPage =
+    pages[currentPage];
+
+    oldPage.style.animation =
+    "pageOut .25s ease both";
+
+
+    setTimeout(() => {
+
+        oldPage.classList.remove("active");
+
+        currentPage = index;
+
+        pages[currentPage]
+        .classList.add("active");
+
+        updateNavigation();
+
     },220);
-  }
 
-  function celebrate(){
-    for(let i=0;i<22;i++){
-      const heart=document.createElement('div');
-      heart.className='floating-heart';
-      heart.textContent=['♥','♡','✦','❤'][Math.floor(Math.random()*4)];
-      heart.style.left=Math.random()*100+'vw';
-      heart.style.animationDuration=(4+Math.random()*4)+'s';
-      heart.style.fontSize=(14+Math.random()*20)+'px';
-      document.body.appendChild(heart);
-      setTimeout(()=>heart.remove(),8500);
-    }
-  }
-
-  document.addEventListener('keydown',(event)=>{
-    if(event.key==='ArrowRight') goTo(currentPage+1);
-    if(event.key==='ArrowLeft') goTo(currentPage-1);
-  });
-
-  updateNavigation();
-
-const birthdayMusic = document.getElementById("birthdayMusic");
-const musicBtn = document.getElementById("musicBtn");
-
-async function startBirthdayMusic() {
-    try {
-        await birthdayMusic.play();
-        musicBtn.textContent = "♫";
-    } catch (error) {
-        // Browser autoplay block kare to first tap par music start hoga
-        musicBtn.textContent = "▶";
-    }
 }
 
-function toggleMusic() {
-    if (birthdayMusic.paused) {
-        birthdayMusic.play();
-        musicBtn.textContent = "♫";
-    } else {
-        birthdayMusic.pause();
-        musicBtn.textContent = "▶";
+
+/* =========================
+   FINAL MAGIC
+========================= */
+
+function celebrate(){
+
+    startMusic();
+
+    for(let i=0;i<35;i++){
+
+        const heart =
+        document.createElement("div");
+
+        heart.className =
+        "floating-heart";
+
+        heart.textContent =
+        ["♥","♡","✦","❤","💗"]
+        [Math.floor(Math.random()*5)];
+
+        heart.style.left =
+        Math.random()*100+"vw";
+
+        heart.style.animationDuration =
+        (4+Math.random()*4)+"s";
+
+        heart.style.fontSize =
+        (14+Math.random()*24)+"px";
+
+        document.body.appendChild(heart);
+
+        setTimeout(
+        () => heart.remove(),
+        8500);
+
     }
+
 }
 
-window.addEventListener("load", startBirthdayMusic);
 
-// Samsung/Chrome autoplay restriction fallback
-document.addEventListener("pointerdown", () => {
-    if (birthdayMusic.paused) {
-        startBirthdayMusic();
-    }
-}, { once: true });
+/* KEYBOARD */
+
+document.addEventListener(
+"keydown",
+event => {
+
+    if(event.key === "ArrowRight")
+        goTo(currentPage+1);
+
+    if(event.key === "ArrowLeft")
+        goTo(currentPage-1);
+
+});
+
+
+updateNavigation();
+
 </script>
+
 </body>
 </html>
