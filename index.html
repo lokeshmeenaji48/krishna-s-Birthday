@@ -297,6 +297,53 @@ Tu sirf rishta nahi — mera pyaara sa jahaan hai. <span class="heart">♥</span
   });
 
   updateNavigation();
+
+const music = document.getElementById("music");
+const musicBtn = document.getElementById("musicBtn");
+
+async function startMusic(){
+
+    try{
+        await music.play();
+        musicBtn.innerText = "🔇 Pause Music";
+    }catch(error){
+        musicBtn.innerText = "🎵 Tap to Play";
+    }
+
+}
+
+function toggleMusic(){
+
+    if(music.paused){
+        startMusic();
+    }else{
+        music.pause();
+        musicBtn.innerText = "🎵 Play Music";
+    }
+
+}
+
+// Attempt autoplay. Browser may block it.
+window.addEventListener("load",()=>{
+    startMusic();
+});
+
+
+/* REVEAL */
+
+function reveal(){
+
+    document.getElementById("intro").classList.add("hide");
+
+    startMusic();
+
+    // Celebration at opening
+    launchShow(18);
+
+}
+
+
+  
 </script>
 </body>
 </html>
