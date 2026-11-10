@@ -97,7 +97,7 @@
     @media(max-height:700px) and (min-width:681px){.page{min-height:560px}.panel{padding:25px}.photo-frame{max-width:250px}.photo-frame img,.photo-placeholder{aspect-ratio:4/3}}
     @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
 
-    .music-btn{
+    #music-btn{
     position:fixed;
     right:15px;
     top:10px;
@@ -113,11 +113,10 @@
   </style>
 </head>
 <body>
-  <audio id="music" loop preload="auto">
-    <source src="Birthday.mp3" type="audio/mpeg">
-</audio>
+  
+<audio id="birthdayMusic" src="Birthday.mp3" loop preload="auto"></audio>
 
-<button onclick="startExperience()">SURPRISE KHOLO</button>
+<button id="musicBtn" onclick="toggleMusic()" aria-label="Toggle music">♫</button>
 <div class="app">
   <header class="topbar">
     <div class="brand">A little surprise · made with love</div>
@@ -296,14 +295,37 @@ Tu sirf rishta nahi — mera pyaara sa jahaan hai. <span class="heart">♥</span
 
   updateNavigation();
 
-function startExperience() {
-    const music = document.getElementById("music");
+const birthdayMusic = document.getElementById("birthdayMusic");
+const musicBtn = document.getElementById("musicBtn");
 
-    music.play().catch(() => {});
-
-    // yahan tumhara page transition
-    document.getElementById("opening").classList.add("hide");
+async function startBirthdayMusic() {
+    try {
+        await birthdayMusic.play();
+        musicBtn.textContent = "♫";
+    } catch (error) {
+        // Browser autoplay block kare to first tap par music start hoga
+        musicBtn.textContent = "▶";
+    }
 }
-                                     </script>
+
+function toggleMusic() {
+    if (birthdayMusic.paused) {
+        birthdayMusic.play();
+        musicBtn.textContent = "♫";
+    } else {
+        birthdayMusic.pause();
+        musicBtn.textContent = "▶";
+    }
+}
+
+window.addEventListener("load", startBirthdayMusic);
+
+// Samsung/Chrome autoplay restriction fallback
+document.addEventListener("pointerdown", () => {
+    if (birthdayMusic.paused) {
+        startBirthdayMusic();
+    }
+}, { once: true });
+</script>
 </body>
 </html>
