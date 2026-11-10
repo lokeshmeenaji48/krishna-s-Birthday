@@ -2,581 +2,1189 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#210d20">
 
-<title>For My Little Brother ❤️</title>
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Hand+Pre:wght@400..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#170b1c">
+
+<title>Happy Birthday Little Brother ❤️</title>
+
+
+<!-- GOOGLE FONTS -->
+
+<link rel="preconnect"
+      href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Hand+Pre:wght@400..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      rel="stylesheet">
 
 
 <style>
+
+/* ==========================================
+   BASIC
+========================================== */
+
 :root{
-  --bg:#170b1c;
-  --pink:#ff8fb8;
-  --rose:#ffb6cb;
-  --cream:#fff0e8;
-  --gold:#f5d49a;
+
+    --bg:#170b1c;
+    --pink:#ff8fb8;
+    --rose:#ffb6cb;
+    --cream:#fff0e8;
+    --gold:#f5d49a;
+
 }
 
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-    font-family: "Ubuntu", sans-serif;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
 html{
-  scroll-behavior:smooth;
+    scroll-behavior:smooth;
 }
 
 body{
-  min-height:100vh;
-  color:var(--cream);
-  font-family:Georgia,"Times New Roman",serif;
 
-  background:
-  radial-gradient(circle at 15% 18%,rgba(255,105,160,.18),transparent 29%),
-  radial-gradient(circle at 85% 78%,rgba(155,91,190,.2),transparent 30%),
-  linear-gradient(135deg,#170b1c,#2a1028 48%,#160d25);
+    min-height:100vh;
 
-  overflow:hidden;
+    color:var(--cream);
+
+    font-family:"Ubuntu",sans-serif;
+
+    background:
+    radial-gradient(
+        circle at 15% 18%,
+        rgba(255,105,160,.20),
+        transparent 30%
+    ),
+
+    radial-gradient(
+        circle at 85% 78%,
+        rgba(155,91,190,.22),
+        transparent 30%
+    ),
+
+    linear-gradient(
+        135deg,
+        #170b1c,
+        #2a1028 48%,
+        #160d25
+    );
+
+    overflow:hidden;
+
 }
 
-/* STAR EFFECT */
+
+/* ==========================================
+   STARS
+========================================== */
 
 body::before{
-  content:"";
-  position:fixed;
-  inset:-20%;
-  pointer-events:none;
-  z-index:0;
 
-  background-image:
-  radial-gradient(2px 2px at 20% 30%,#fff 45%,transparent 55%),
-  radial-gradient(1.5px 1.5px at 70% 20%,#ffd6e5 45%,transparent 55%),
-  radial-gradient(2px 2px at 82% 65%,#fff 45%,transparent 55%),
-  radial-gradient(1px 1px at 38% 82%,#ffd6e5 45%,transparent 55%);
+    content:"";
 
-  background-size:290px 240px;
-  opacity:.45;
-  animation:twinkle 7s ease-in-out infinite alternate;
+    position:fixed;
+
+    inset:-20%;
+
+    pointer-events:none;
+
+    z-index:0;
+
+    background-image:
+
+    radial-gradient(
+        2px 2px at 20% 30%,
+        #fff 45%,
+        transparent 55%
+    ),
+
+    radial-gradient(
+        1.5px 1.5px at 70% 20%,
+        #ffd6e5 45%,
+        transparent 55%
+    ),
+
+    radial-gradient(
+        2px 2px at 82% 65%,
+        #fff 45%,
+        transparent 55%
+    ),
+
+    radial-gradient(
+        1px 1px at 38% 82%,
+        #ffd6e5 45%,
+        transparent 55%
+    );
+
+    background-size:290px 240px;
+
+    opacity:.45;
+
+    animation:twinkle 7s ease-in-out infinite alternate;
+
 }
+
 
 @keyframes twinkle{
-  from{opacity:.18}
-  to{opacity:.58}
+
+    from{
+        opacity:.18;
+    }
+
+    to{
+        opacity:.58;
+    }
+
 }
+
+
+/* ==========================================
+   APP
+========================================== */
 
 .app{
-  position:relative;
-  z-index:1;
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
+
+    position:relative;
+
+    z-index:1;
+
+    min-height:100svh;
+
+    display:flex;
+
+    flex-direction:column;
+
 }
 
-/* TOP */
+
+/* ==========================================
+   TOP BAR
+========================================== */
 
 .topbar{
-  width:min(100%,1050px);
-  margin:auto;
-  padding:20px 22px 0;
 
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+    width:min(100%,1050px);
+
+    margin:auto;
+
+    padding:20px 22px 0;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
 }
 
 .brand{
-  font:600 11px Arial,sans-serif;
-  letter-spacing:3px;
-  text-transform:uppercase;
-  color:#f8c8d9;
+
+    font-family:"Ubuntu",sans-serif;
+
+    font-size:11px;
+
+    font-weight:500;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    color:#f8c8d9;
+
 }
 
 .counter{
-  font:12px Arial,sans-serif;
-  letter-spacing:2px;
+
+    font-family:"Ubuntu",sans-serif;
+
+    font-size:12px;
+
+    letter-spacing:2px;
+
+    color:#e8cada;
+
 }
 
-/* PROGRESS */
+
+/* ==========================================
+   PROGRESS
+========================================== */
 
 .progress{
-  width:min(100%,1050px);
-  height:3px;
-  margin:14px auto 0;
-  padding:0 22px;
 
-  display:flex;
-  gap:5px;
+    width:min(100%,1050px);
+
+    height:3px;
+
+    margin:14px auto 0;
+
+    padding:0 22px;
+
+    display:flex;
+
+    gap:5px;
+
 }
 
 .progress span{
-  height:3px;
-  flex:1;
-  border-radius:10px;
-  background:rgba(255,255,255,.16);
-  transition:.4s;
+
+    height:3px;
+
+    flex:1;
+
+    border-radius:10px;
+
+    background:rgba(255,255,255,.16);
+
+    transition:.5s;
+
 }
 
 .progress span.done{
-  background:linear-gradient(90deg,#ff8fb8,#f5d49a);
-  box-shadow:0 0 12px rgba(255,143,184,.55);
+
+    background:
+    linear-gradient(
+        90deg,
+        #ff8fb8,
+        #f5d49a
+    );
+
+    box-shadow:
+    0 0 12px rgba(255,143,184,.65);
+
 }
 
-/* PAGES */
+
+/* ==========================================
+   MAIN
+========================================== */
 
 main{
-  flex:1;
-  display:grid;
-  place-items:center;
-  padding:22px 18px 28px;
+
+    flex:1;
+
+    display:grid;
+
+    place-items:center;
+
+    padding:22px 18px 28px;
+
 }
 
+
+/* ==========================================
+   PAGE
+========================================== */
+
 .page{
-  display:none;
 
-  width:min(100%,900px);
-  min-height:min(710px,calc(100vh - 125px));
+    display:none;
 
-  align-items:center;
-  justify-content:center;
-  text-align:center;
+    width:min(100%,900px);
 
-  animation:pageIn .75s cubic-bezier(.2,.75,.25,1);
+    min-height:min(
+        710px,
+        calc(100svh - 125px)
+    );
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    animation:
+    pageIn .8s
+    cubic-bezier(.2,.75,.25,1);
+
 }
 
 .page.active{
-  display:flex;
+    display:flex;
 }
+
+
+/* PAGE TRANSITION */
 
 @keyframes pageIn{
-  from{
-    opacity:0;
-    transform:translateY(24px) scale(.985);
-    filter:blur(7px);
-  }
 
-  to{
-    opacity:1;
-    transform:none;
-    filter:blur(0);
-  }
+    from{
+
+        opacity:0;
+
+        transform:
+        translateY(30px)
+        scale(.97);
+
+        filter:blur(8px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+        translateY(0)
+        scale(1);
+
+        filter:blur(0);
+
+    }
+
 }
 
-/* PANEL */
+@keyframes pageOut{
+
+    to{
+
+        opacity:0;
+
+        transform:
+        translateY(-20px)
+        scale(.98);
+
+        filter:blur(5px);
+
+    }
+
+}
+
+
+/* ==========================================
+   PANEL
+========================================== */
 
 .panel{
-  width:100%;
 
-  padding:clamp(24px,5vw,54px);
+    width:100%;
 
-  border:1px solid rgba(255,255,255,.16);
-  border-radius:30px;
+    padding:
+    clamp(25px,5vw,55px);
 
-  background:
-  linear-gradient(
-    145deg,
-    rgba(255,255,255,.105),
-    rgba(255,255,255,.035)
-  );
+    border:
+    1px solid
+    rgba(255,255,255,.16);
 
-  box-shadow:
-  0 25px 90px rgba(0,0,0,.28),
-  inset 0 1px rgba(255,255,255,.1);
+    border-radius:30px;
 
-  backdrop-filter:blur(14px);
+    background:
+    linear-gradient(
+        145deg,
+        rgba(255,255,255,.105),
+        rgba(255,255,255,.035)
+    );
+
+    box-shadow:
+
+    0 25px 90px
+    rgba(0,0,0,.30),
+
+    inset 0 1px
+    rgba(255,255,255,.10);
+
+    backdrop-filter:blur(15px);
+
 }
 
-/* TEXT */
+
+/* ==========================================
+   TEXT
+========================================== */
 
 .eyebrow{
-  font:11px Arial,sans-serif;
-  letter-spacing:4px;
-  text-transform:uppercase;
-  color:var(--gold);
-  margin-bottom:18px;
+
+    font-family:"Ubuntu",sans-serif;
+
+    font-size:11px;
+
+    font-weight:500;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+    color:var(--gold);
+
+    margin-bottom:18px;
+
 }
 
 h1{
-  font-size:clamp(38px,8vw,76px);
-  line-height:1.05;
-  letter-spacing:-2px;
-  margin-bottom:20px;
-  color:#fff0f4;
 
-  text-shadow:
-  0 4px 30px rgba(255,121,174,.22);
+    font-size:
+    clamp(40px,8vw,76px);
+
+    line-height:1.05;
+
+    letter-spacing:-2px;
+
+    margin-bottom:20px;
+
+    color:#fff0f4;
+
+    text-shadow:
+    0 4px 30px
+    rgba(255,121,174,.30);
+
 }
 
 h2{
-  font-size:clamp(30px,6vw,52px);
-  line-height:1.1;
-  margin-bottom:18px;
+
+    font-size:
+    clamp(31px,6vw,52px);
+
+    line-height:1.1;
+
+    margin-bottom:18px;
+
+    color:#ffe5ed;
+
 }
 
 .script{
-  font-style:italic;
-  color:#ffc2d7;
+
+    font-family:
+    "Edu NSW ACT Hand Pre",
+    cursive;
+
+    font-style:normal;
+
+    color:#ffc2d7;
+
 }
 
 .poem{
-  font-size:clamp(18px,2.7vw,25px);
-  line-height:1.9;
 
-  color:#fbeaf0;
+    font-family:
+    "Edu NSW ACT Hand Pre",
+    cursive;
 
-  margin:18px auto 0;
-  max-width:680px;
+    font-size:
+    clamp(21px,3vw,30px);
 
-  white-space:pre-line;
+    line-height:1.65;
+
+    color:#fbeaf0;
+
+    margin:18px auto 0;
+
+    max-width:700px;
+
+    white-space:pre-line;
+
 }
 
 .heart{
-  color:#ff8fb8;
-  text-shadow:0 0 22px rgba(255,95,150,.75);
 
-  animation:heartbeat 1.8s infinite;
+    display:inline-block;
+
+    color:#ff8fb8;
+
+    text-shadow:
+    0 0 22px
+    rgba(255,95,150,.85);
+
+    animation:
+    heartbeat 1.6s
+    infinite;
+
 }
 
 @keyframes heartbeat{
-  0%,100%{transform:scale(1)}
-  12%{transform:scale(1.16)}
-  24%{transform:scale(1)}
-  36%{transform:scale(1.1)}
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    12%{
+        transform:scale(1.18);
+    }
+
+    24%{
+        transform:scale(1);
+    }
+
+    36%{
+        transform:scale(1.12);
+    }
+
 }
 
-/* ORB */
+
+/* ==========================================
+   GLOW ORB
+========================================== */
 
 .orb{
-  width:110px;
-  height:110px;
 
-  border-radius:50%;
+    width:110px;
 
-  margin:0 auto 28px;
+    height:110px;
 
-  display:grid;
-  place-items:center;
+    border-radius:50%;
 
-  font-size:44px;
+    margin:0 auto 28px;
 
-  background:
-  radial-gradient(
-    circle at 35% 30%,
-    #ffd9e6,
-    #d85f97 48%,
-    #71306e 80%
-  );
+    display:grid;
 
-  box-shadow:
-  0 0 25px rgba(255,116,169,.5),
-  0 0 80px rgba(222,87,157,.2);
+    place-items:center;
 
-  animation:float 4s ease-in-out infinite;
+    font-size:44px;
+
+    background:
+    radial-gradient(
+        circle at 35% 30%,
+        #ffd9e6,
+        #d85f97 48%,
+        #71306e 80%
+    );
+
+    box-shadow:
+
+    0 0 25px
+    rgba(255,116,169,.5),
+
+    0 0 80px
+    rgba(222,87,157,.25);
+
+    animation:
+    float 4s ease-in-out infinite;
+
 }
 
 @keyframes float{
-  50%{transform:translateY(-10px)}
+
+    50%{
+        transform:translateY(-10px);
+    }
+
 }
 
-/* BUTTON */
 
-.btnrow{
-  display:flex;
-  justify-content:center;
-  align-items:center;
+/* ==========================================
+   INNER NAV BUTTONS
+========================================== */
 
-  gap:12px;
-  flex-wrap:wrap;
+.inner-nav{
 
-  margin-top:32px;
+    display:flex;
+
+    justify-content:center;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+
+    margin-top:35px;
+
 }
+
 
 button{
-  border:0;
-  cursor:pointer;
 
-  border-radius:99px;
+    border:0;
 
-  padding:14px 25px;
+    cursor:pointer;
 
-  font:600 13px Arial,sans-serif;
-  letter-spacing:1px;
+    border-radius:999px;
 
-  transition:.2s;
+    padding:14px 25px;
+
+    font-family:"Ubuntu",sans-serif;
+
+    font-size:12px;
+
+    font-weight:600;
+
+    letter-spacing:1px;
+
+    transition:
+    transform .25s,
+    box-shadow .25s;
+
 }
 
 button:hover{
-  transform:translateY(-3px);
+
+    transform:
+    translateY(-4px)
+    scale(1.02);
+
 }
 
+button:active{
+
+    transform:
+    translateY(-1px)
+    scale(.98);
+
+}
+
+
 .primary{
-  color:#351426;
 
-  background:
-  linear-gradient(120deg,#ffd4e2,#f3c98c);
+    color:#351426;
 
-  box-shadow:
-  0 8px 28px rgba(239,145,174,.25);
+    background:
+    linear-gradient(
+        120deg,
+        #ffd4e2,
+        #f3c98c
+    );
+
+    box-shadow:
+    0 8px 28px
+    rgba(239,145,174,.30);
+
 }
 
 .secondary{
-  color:#ffe4ee;
 
-  background:rgba(255,255,255,.08);
+    color:#ffe4ee;
 
-  border:1px solid rgba(255,255,255,.2);
+    background:
+    rgba(255,255,255,.08);
+
+    border:
+    1px solid
+    rgba(255,255,255,.2);
+
 }
 
-/* PHOTO */
+
+/* ==========================================
+   PHOTO PAGES
+========================================== */
 
 .photo-layout{
-  display:grid;
 
-  grid-template-columns:
-  minmax(0,1fr)
-  minmax(230px,.82fr);
+    display:grid;
 
-  align-items:center;
+    grid-template-columns:
+    minmax(0,1fr)
+    minmax(230px,.82fr);
 
-  gap:clamp(22px,5vw,48px);
+    align-items:center;
 
-  text-align:left;
+    gap:
+    clamp(22px,5vw,48px);
+
+    text-align:left;
+
 }
 
 .photo-frame{
-  position:relative;
 
-  width:100%;
-  max-width:340px;
+    position:relative;
 
-  margin:auto;
+    width:100%;
 
-  padding:10px;
+    max-width:340px;
 
-  border-radius:24px;
+    margin:auto;
 
-  background:
-  linear-gradient(
-    145deg,
-    #ffe1e9,
-    #d891b5,
-    #f5d49a
-  );
+    padding:10px;
 
-  box-shadow:
-  0 18px 55px rgba(0,0,0,.35);
+    border-radius:24px;
 
-  transform:rotate(-2deg);
+    background:
+    linear-gradient(
+        145deg,
+        #ffe1e9,
+        #d891b5,
+        #f5d49a
+    );
+
+    box-shadow:
+    0 18px 55px
+    rgba(0,0,0,.40);
+
+    transform:rotate(-2deg);
+
+    animation:
+    photoFloat 4s ease-in-out infinite;
+
+}
+
+@keyframes photoFloat{
+
+    50%{
+        transform:
+        rotate(2deg)
+        translateY(-7px);
+    }
+
 }
 
 .photo-frame img{
-  display:block;
 
-  width:100%;
+    display:block;
 
-  aspect-ratio:4/5;
+    width:100%;
 
-  object-fit:cover;
+    aspect-ratio:4/5;
 
-  border-radius:17px;
+    object-fit:cover;
 
-  background:#3b2039;
+    border-radius:17px;
+
+    background:#3b2039;
+
 }
 
 .photo-caption{
-  font:11px Arial,sans-serif;
 
-  letter-spacing:3px;
+    font-family:"Ubuntu",sans-serif;
 
-  color:#f4d3a2;
+    font-size:10px;
 
-  text-transform:uppercase;
+    font-weight:500;
 
-  margin-top:15px;
+    letter-spacing:3px;
 
-  text-align:center;
+    color:#f4d3a2;
+
+    text-transform:uppercase;
+
+    margin-top:15px;
+
+    text-align:center;
+
 }
 
 .photo-copy h2{
-  font-size:clamp(29px,5vw,47px);
+
+    font-size:
+    clamp(30px,5vw,47px);
+
 }
 
 .photo-copy .poem{
-  font-size:clamp(17px,2.2vw,22px);
-  margin-left:0;
+
+    font-size:
+    clamp(20px,2.6vw,27px);
+
+    margin-left:0;
+
 }
 
-/* WISHES */
+
+/* ==========================================
+   WISH GRID
+========================================== */
 
 .wish-grid{
-  display:grid;
 
-  grid-template-columns:
-  repeat(2,minmax(0,1fr));
+    display:grid;
 
-  gap:14px;
+    grid-template-columns:
+    repeat(2,minmax(0,1fr));
 
-  margin:28px auto 0;
+    gap:14px;
 
-  max-width:700px;
+    margin:28px auto 0;
+
+    max-width:700px;
+
 }
 
 .wish{
-  padding:20px 16px;
 
-  border:1px solid rgba(255,255,255,.13);
+    padding:20px 16px;
 
-  border-radius:20px;
+    border:
+    1px solid
+    rgba(255,255,255,.13);
 
-  background:rgba(255,255,255,.055);
+    border-radius:20px;
 
-  font-size:clamp(16px,2vw,20px);
+    background:
+    rgba(255,255,255,.055);
 
-  line-height:1.7;
+    font-family:
+    "Edu NSW ACT Hand Pre",
+    cursive;
+
+    font-size:22px;
+
+    line-height:1.5;
+
+    color:#ffeaf1;
+
+    transition:.3s;
+
+}
+
+.wish:hover{
+
+    transform:
+    translateY(-5px);
+
+    background:
+    rgba(255,255,255,.09);
+
 }
 
 .wish span{
-  display:block;
 
-  color:var(--gold);
+    display:block;
 
-  font-size:20px;
+    color:var(--gold);
 
-  margin-bottom:8px;
+    font-size:22px;
+
+    margin-bottom:5px;
+
 }
 
 .signature{
-  font:italic 18px Georgia,serif;
 
-  color:#ffc2d7;
+    font-family:
+    "Edu NSW ACT Hand Pre",
+    cursive;
 
-  margin-top:28px;
+    font-size:24px;
+
+    color:#ffc2d7;
+
+    margin-top:28px;
+
 }
 
-/* BOTTOM NAV */
 
-.bottomnav{
-  width:min(100%,1050px);
+/* ==========================================
+   SMALL NOTE
+========================================== */
 
-  margin:auto;
+.tiny-note{
 
-  padding:0 22px 18px;
+    font-family:"Ubuntu",sans-serif;
 
-  display:flex;
+    font-size:10px;
 
-  justify-content:space-between;
+    letter-spacing:1px;
 
-  align-items:center;
+    color:#d9bdce;
 
-  gap:12px;
+    margin-top:22px;
+
 }
 
-.navhint{
-  font:10px Arial,sans-serif;
-  letter-spacing:1.6px;
 
-  color:#c9aebe;
+/* ==========================================
+   CELEBRATION PARTICLES
+========================================== */
 
-  text-transform:uppercase;
+.celebration{
+
+    position:fixed;
+
+    left:0;
+    top:0;
+
+    width:100vw;
+    height:100vh;
+
+    pointer-events:none;
+
+    z-index:20;
+
+    overflow:hidden;
+
 }
 
-.navbtn{
-  padding:11px 17px;
-  font-size:11px;
+.particle{
+
+    position:absolute;
+
+    bottom:-30px;
+
+    font-size:20px;
+
+    animation:
+    riseCelebration
+    linear forwards;
+
+    filter:
+    drop-shadow(
+        0 0 8px
+        rgba(255,130,180,.7)
+    );
+
 }
 
-.hidden{
-  visibility:hidden;
-  pointer-events:none;
+@keyframes riseCelebration{
+
+    0%{
+
+        transform:
+        translateY(0)
+        rotate(0deg)
+        scale(.6);
+
+        opacity:0;
+
+    }
+
+    10%{
+        opacity:1;
+    }
+
+    100%{
+
+        transform:
+        translateY(-110vh)
+        rotate(360deg)
+        scale(1.4);
+
+        opacity:0;
+
+    }
+
 }
 
-/* FLOATING HEARTS */
 
-.floating-heart{
-  position:fixed;
+/* ==========================================
+   PAGE FLASH
+========================================== */
 
-  bottom:-35px;
+.pageFlash{
 
-  z-index:5;
+    position:fixed;
 
-  color:rgba(255,161,194,.7);
+    inset:0;
 
-  font-size:20px;
+    z-index:15;
 
-  pointer-events:none;
+    pointer-events:none;
 
-  animation:rise linear forwards;
+    background:
+    radial-gradient(
+        circle,
+        rgba(255,174,208,.18),
+        transparent 55%
+    );
+
+    animation:
+    flash .7s ease forwards;
+
 }
 
-@keyframes rise{
-  to{
-    transform:
-    translateY(-110vh)
-    rotate(25deg);
+@keyframes flash{
 
-    opacity:0;
-  }
+    0%{
+        opacity:0;
+    }
+
+    30%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:0;
+    }
+
 }
 
-/* MOBILE */
+
+/* ==========================================
+   MOBILE
+========================================== */
 
 @media(max-width:680px){
 
-  .topbar{
-    padding-top:15px;
-  }
+    .topbar{
 
-  main{
-    padding:17px 13px 22px;
-  }
+        padding:
+        15px 16px 0;
 
-  .page{
-    min-height:calc(100vh - 112px);
-  }
+    }
 
-  .panel{
-    padding:25px 19px;
-    border-radius:24px;
-  }
+    .brand{
 
-  .photo-layout{
-    grid-template-columns:1fr;
-    gap:23px;
-    text-align:center;
-  }
+        font-size:9px;
 
-  .photo-frame{
-    max-width:245px;
-  }
+        letter-spacing:2px;
 
-  .photo-copy .poem{
-    margin-left:auto;
-  }
+    }
 
-  .wish-grid{
-    grid-template-columns:1fr;
-  }
+    .counter{
 
-  .bottomnav{
-    padding-bottom:12px;
-  }
+        font-size:10px;
 
-  button{
-    padding:13px 19px;
-  }
+    }
+
+    .progress{
+
+        margin-top:11px;
+
+        padding:0 16px;
+
+    }
+
+    main{
+
+        padding:
+        16px 12px 22px;
+
+    }
+
+    .page{
+
+        min-height:
+        calc(100svh - 110px);
+
+    }
+
+    .panel{
+
+        padding:
+        27px 18px;
+
+        border-radius:24px;
+
+    }
+
+    h1{
+
+        font-size:
+        clamp(37px,12vw,60px);
+
+    }
+
+    h2{
+
+        font-size:
+        clamp(29px,10vw,44px);
+
+    }
+
+    .poem{
+
+        font-size:
+        clamp(20px,6vw,26px);
+
+        line-height:1.65;
+
+    }
+
+    .photo-layout{
+
+        grid-template-columns:1fr;
+
+        gap:25px;
+
+        text-align:center;
+
+    }
+
+    .photo-frame{
+
+        max-width:245px;
+
+    }
+
+    .photo-copy .poem{
+
+        margin-left:auto;
+
+    }
+
+    .wish-grid{
+
+        grid-template-columns:1fr;
+
+        gap:10px;
+
+    }
+
+    .wish{
+
+        padding:15px 12px;
+
+        font-size:21px;
+
+    }
+
+    button{
+
+        padding:
+        13px 19px;
+
+    }
+
 }
+
+
+/* SMALL HEIGHT DEVICES */
+
+@media(max-height:700px){
+
+    .page{
+
+        min-height:560px;
+
+    }
+
+    .panel{
+
+        padding:25px;
+
+    }
+
+    .orb{
+
+        width:80px;
+
+        height:80px;
+
+        font-size:32px;
+
+        margin-bottom:18px;
+
+    }
+
+}
+
 </style>
 </head>
 
 
 <body>
 
+
+<!-- MUSIC -->
+
+<audio id="birthdayMusic"
+       src="Birthday.mp3"
+       loop
+       preload="auto">
+</audio>
+
+
+<!-- CELEBRATION CONTAINER -->
+
+<div id="celebration"
+     class="celebration">
+</div>
+
+
 <div class="app">
+
+
+<!-- ======================================
+     TOP
+====================================== -->
 
 <header class="topbar">
 
@@ -584,14 +1192,21 @@ button:hover{
 A Little Surprise · Made With Love
 </div>
 
-<div class="counter" id="counter">
+<div class="counter"
+     id="counter">
+
 01 / 06
+
 </div>
 
 </header>
 
 
-<div class="progress" id="progress">
+<!-- ======================================
+     PROGRESS
+====================================== -->
+
+<div class="progress">
 
 <span class="done"></span>
 <span></span>
@@ -603,38 +1218,39 @@ A Little Surprise · Made With Love
 </div>
 
 
-<!-- ========================= -->
-<!-- MUSIC -->
-<!-- ========================= -->
-
-<audio id="birthdayMusic"
-       src="Birthday.mp3"
-       loop
-       preload="auto">
-</audio>
-
 
 <main>
 
 
-<!-- PAGE 1 -->
+<!-- ======================================
+     PAGE 1
+====================================== -->
 
 <section class="page active">
 
 <div class="panel">
 
+
 <div class="orb">
 ✉️
 </div>
+
 
 <p class="eyebrow">
 A Secret Is Waiting For You
 </p>
 
+
 <h1>
+
 Ek chhota sa<br>
-<span class="script">raaz...</span>
+
+<span class="script">
+raaz...
+</span>
+
 </h1>
+
 
 <div class="poem">
 
@@ -648,18 +1264,25 @@ Kyunki tere liye humne sitare chhupaye hain. ❤️
 
 </div>
 
-<div class="btnrow">
+
+<div class="inner-nav">
 
 <button class="primary"
 onclick="startMusic();goTo(1)">
+
 SURPRISE KHOLO ✨
+
 </button>
 
 </div>
-<br />
+
+
 <div class="tiny-note">
-Tap to begin your little birthday journey
+
+Tap karo… kahaani shuru hoti hai ❤️
+
 </div>
+
 
 </div>
 
@@ -667,19 +1290,24 @@ Tap to begin your little birthday journey
 
 
 
-<!-- PAGE 2 -->
+<!-- ======================================
+     PAGE 2
+====================================== -->
 
 <section class="page">
 
 <div class="panel">
 
-<p class="eyebrow">
-The Secret Is Finally Out
-</p>
 
 <div class="orb">
 🎂
 </div>
+
+
+<p class="eyebrow">
+The Secret Is Finally Out
+</p>
+
 
 <h1>
 
@@ -690,6 +1318,7 @@ mere chhote bhai!
 </span>
 
 </h1>
+
 
 <div class="poem">
 
@@ -703,14 +1332,18 @@ Teri khushiyon se hi apni duniya aabaad rehti hai. ❤️
 
 </div>
 
-<div class="btnrow">
+
+<div class="inner-nav">
 
 <button class="primary"
 onclick="goTo(2)">
+
 YAADON KI TARAF 📸
+
 </button>
 
 </div>
+
 
 </div>
 
@@ -718,18 +1351,22 @@ YAADON KI TARAF 📸
 
 
 
-<!-- PAGE 3 PHOTO 1 -->
+<!-- ======================================
+     PAGE 3
+====================================== -->
 
 <section class="page">
 
 <div class="panel">
 
+
 <div class="photo-layout">
+
 
 <div class="photo-frame">
 
 <img src="memory1.jpg"
-alt="Brother memory">
+     alt="First brother memory">
 
 <div class="photo-caption">
 A Memory To Keep Forever
@@ -740,9 +1377,11 @@ A Memory To Keep Forever
 
 <div class="photo-copy">
 
+
 <p class="eyebrow">
 Yaadon Ka Pehla Panna
 </p>
+
 
 <h2>
 
@@ -767,9 +1406,23 @@ Bhai tu rahega hamesha dil ke sabse paas. ❤️
 
 </div>
 
+
+<div class="inner-nav">
+
+<button class="primary"
+onclick="goTo(3)">
+
+AGLI YAAD → ✨
+
+</button>
+
+</div>
+
+
 </div>
 
 </div>
+
 
 </div>
 
@@ -777,18 +1430,22 @@ Bhai tu rahega hamesha dil ke sabse paas. ❤️
 
 
 
-<!-- PAGE 4 PHOTO 2 -->
+<!-- ======================================
+     PAGE 4
+====================================== -->
 
 <section class="page">
 
 <div class="panel">
 
+
 <div class="photo-layout">
+
 
 <div class="photo-frame">
 
 <img src="memory2.jpg"
-alt="Brother second memory">
+     alt="Second brother memory">
 
 <div class="photo-caption">
 Another Little Forever
@@ -799,9 +1456,11 @@ Another Little Forever
 
 <div class="photo-copy">
 
+
 <p class="eyebrow">
 Yaadon Ka Doosra Panna
 </p>
+
 
 <h2>
 
@@ -826,9 +1485,23 @@ Tere har kal ko khushiyon se roshan karun. ❤️
 
 </div>
 
+
+<div class="inner-nav">
+
+<button class="primary"
+onclick="goTo(4)">
+
+DIL KI BAAT ❤️
+
+</button>
+
+</div>
+
+
 </div>
 
 </div>
+
 
 </div>
 
@@ -836,15 +1509,19 @@ Tere har kal ko khushiyon se roshan karun. ❤️
 
 
 
-<!-- PAGE 5 -->
+<!-- ======================================
+     PAGE 5
+====================================== -->
 
 <section class="page">
 
 <div class="panel">
 
+
 <p class="eyebrow">
 Dil Se Nikli Kuch Duayein
 </p>
+
 
 <h2>
 
@@ -871,6 +1548,7 @@ Teri zindagi mein khushiyon ke phool khilte jaayein. ❤️
 
 
 <div class="wish-grid">
+
 
 <div class="wish">
 
@@ -915,6 +1593,7 @@ tera naseeb roshan rahe.
 
 </div>
 
+
 </div>
 
 
@@ -924,14 +1603,18 @@ Dher saara pyaar — tere bade bhai ki taraf se ❤️
 
 </div>
 
-<div class="btnrow">
+
+<div class="inner-nav">
 
 <button class="primary"
 onclick="goTo(5)">
-FINAL SURPRISE ✨
+
+LAST SURPRISE ✨
+
 </button>
 
 </div>
+
 
 </div>
 
@@ -939,19 +1622,24 @@ FINAL SURPRISE ✨
 
 
 
-<!-- PAGE 6 -->
+<!-- ======================================
+     PAGE 6
+====================================== -->
 
 <section class="page">
 
 <div class="panel">
 
+
 <div class="orb">
 💗
 </div>
 
+
 <p class="eyebrow">
 The End… But Love Never Ends
 </p>
+
 
 <h1>
 
@@ -979,12 +1667,13 @@ Tu sirf rishta nahi — mera pyaara sa jahaan hai. ❤️
 </div>
 
 
-<div class="btnrow">
+<div class="inner-nav">
+
 
 <button class="primary"
-onclick="celebrate()">
+onclick="celebrate(true)">
 
-A LITTLE MORE MAGIC ✨
+AUR MAGIC ✨
 
 </button>
 
@@ -992,18 +1681,20 @@ A LITTLE MORE MAGIC ✨
 <button class="secondary"
 onclick="goTo(0)">
 
-REPLAY SURPRISE ↺
+REPLAY ↺
 
 </button>
 
+
 </div>
 
-<br />
+
 <div class="tiny-note">
 
 Made especially for my little brother · With all my love ❤️
 
 </div>
+
 
 </div>
 
@@ -1012,152 +1703,165 @@ Made especially for my little brother · With all my love ❤️
 
 </main>
 
-
-
-<footer class="bottomnav">
-
-<button class="secondary navbtn"
-id="prevBtn"
-onclick="goTo(currentPage-1)">
-
-← BACK
-
-</button>
-
-
-<div class="navhint">
-
-A Journey Made Of Memories & Love
-
-</div>
-
-
-<button class="secondary navbtn"
-id="nextBtn"
-onclick="goTo(currentPage+1)">
-
-NEXT →
-
-</button>
-
-</footer>
-
 </div>
 
 
 
 <script>
 
-const pages =
-Array.from(document.querySelectorAll('.page'));
+/* ==========================================
+   ELEMENTS
+========================================== */
 
-const progressBars =
-Array.from(document.querySelectorAll('#progress span'));
+const pages =
+Array.from(
+    document.querySelectorAll(".page")
+);
+
+const bars =
+Array.from(
+    document.querySelectorAll(".progress span")
+);
 
 const counter =
-document.getElementById('counter');
-
-const prevBtn =
-document.getElementById('prevBtn');
-
-const nextBtn =
-document.getElementById('nextBtn');
+document.getElementById("counter");
 
 const music =
-document.getElementById('birthdayMusic');
+document.getElementById("birthdayMusic");
+
+const celebration =
+document.getElementById("celebration");
 
 let currentPage = 0;
 
 
-/* =========================
-   MUSIC AUTOPLAY
-========================= */
+/* ==========================================
+   MUSIC
+========================================== */
 
 function startMusic(){
 
     music.volume = 0.45;
 
-    const playPromise = music.play();
+    music.play()
+    .catch(() => {
 
-    if(playPromise !== undefined){
+        /*
+        Mobile browsers can block
+        autoplay until user interaction.
+        The page buttons call this function
+        again, so music starts after tap.
+        */
 
-        playPromise.catch(() => {
-
-            console.log(
-              "Browser blocked autoplay. Music will start on first interaction."
-            );
-
-        });
-
-    }
+    });
 
 }
 
 
-/*
-Try immediately when website loads.
-Some mobile browsers may block this.
-*/
+/* Try autoplay immediately */
 
-window.addEventListener("load", () => {
+window.addEventListener(
+"load",
+() => {
 
     startMusic();
 
 });
 
 
-/*
-First touch/click will start music
-if browser blocked initial autoplay.
-*/
+/* ==========================================
+   PAGE CELEBRATION
+========================================== */
 
-document.addEventListener(
-"click",
-startMusic,
-{once:true}
-);
+function celebratePage(){
 
+    const symbols = [
+        "♥",
+        "♡",
+        "✦",
+        "✨",
+        "❤",
+        "💗",
+        "⋆"
+    ];
 
-/* =========================
-   PAGE NAVIGATION
-========================= */
+    for(let i=0;i<14;i++){
 
-function updateNavigation(){
+        const p =
+        document.createElement("div");
 
-    counter.textContent =
-    `${String(currentPage+1).padStart(2,'0')} / 06`;
+        p.className = "particle";
 
-    progressBars.forEach(
-    (bar,index) => {
+        p.textContent =
+        symbols[
+            Math.floor(
+                Math.random()*symbols.length
+            )
+        ];
 
-        bar.classList.toggle(
-        'done',
-        index <= currentPage
-        );
+        p.style.left =
+        Math.random()*100 + "vw";
 
-    });
+        p.style.animationDuration =
+        (3.5 + Math.random()*3) + "s";
 
+        p.style.animationDelay =
+        (Math.random()*1.2) + "s";
 
-    prevBtn.classList.toggle(
-    'hidden',
-    currentPage === 0
-    );
+        p.style.fontSize =
+        (13 + Math.random()*22) + "px";
 
-    nextBtn.classList.toggle(
-    'hidden',
-    currentPage === pages.length-1
-    );
+        celebration.appendChild(p);
+
+        setTimeout(() => {
+
+            p.remove();
+
+        },8000);
+
+    }
 
 }
 
 
+/* ==========================================
+   PAGE FLASH
+========================================== */
+
+function flashPage(){
+
+    const flash =
+    document.createElement("div");
+
+    flash.className =
+    "pageFlash";
+
+    document.body.appendChild(flash);
+
+    setTimeout(() => {
+
+        flash.remove();
+
+    },750);
+
+}
+
+
+/* ==========================================
+   NAVIGATION
+========================================== */
+
 function goTo(index){
 
     if(
-      index < 0 ||
-      index >= pages.length ||
-      index === currentPage
-    ) return;
+        index < 0 ||
+        index >= pages.length ||
+        index === currentPage
+    ){
+
+        return;
+
+    }
 
 
     const oldPage =
@@ -1171,76 +1875,152 @@ function goTo(index){
 
         oldPage.classList.remove("active");
 
+        oldPage.style.animation = "";
+
         currentPage = index;
 
         pages[currentPage]
         .classList.add("active");
 
-        updateNavigation();
 
-    },220);
+        counter.textContent =
+        `${String(currentPage+1).padStart(2,"0")} / 06`;
+
+
+        bars.forEach(
+        (bar,i) => {
+
+            bar.classList.toggle(
+                "done",
+                i <= currentPage
+            );
+
+        });
+
+
+        /* Every page gets celebration */
+
+        celebratePage();
+
+        flashPage();
+
+
+    },230);
 
 }
 
 
-/* =========================
-   FINAL MAGIC
-========================= */
+/* ==========================================
+   FINAL CELEBRATION
+========================================== */
 
-function celebrate(){
+function celebrate(finalMagic=false){
 
     startMusic();
 
-    for(let i=0;i<35;i++){
+    const amount =
+    finalMagic ? 60 : 30;
 
-        const heart =
+
+    const symbols = [
+        "♥",
+        "♡",
+        "❤",
+        "💗",
+        "💖",
+        "✨",
+        "✦",
+        "🎂",
+        "🎉",
+        "🎁"
+    ];
+
+
+    for(let i=0;i<amount;i++){
+
+        const p =
         document.createElement("div");
 
-        heart.className =
-        "floating-heart";
+        p.className =
+        "particle";
 
-        heart.textContent =
-        ["♥","♡","✦","❤","💗"]
-        [Math.floor(Math.random()*5)];
+        p.textContent =
+        symbols[
+            Math.floor(
+                Math.random()*symbols.length
+            )
+        ];
 
-        heart.style.left =
-        Math.random()*100+"vw";
 
-        heart.style.animationDuration =
-        (4+Math.random()*4)+"s";
+        p.style.left =
+        Math.random()*100 + "vw";
 
-        heart.style.fontSize =
-        (14+Math.random()*24)+"px";
 
-        document.body.appendChild(heart);
+        p.style.animationDuration =
+        (3 + Math.random()*5) + "s";
 
-        setTimeout(
-        () => heart.remove(),
-        8500);
+
+        p.style.animationDelay =
+        Math.random()*1.5 + "s";
+
+
+        p.style.fontSize =
+        (15 + Math.random()*28) + "px";
+
+
+        celebration.appendChild(p);
+
+
+        setTimeout(() => {
+
+            p.remove();
+
+        },9000);
 
     }
 
 }
 
 
-/* KEYBOARD */
+/* ==========================================
+   KEYBOARD
+========================================== */
 
 document.addEventListener(
 "keydown",
-event => {
+(event) => {
 
-    if(event.key === "ArrowRight")
-        goTo(currentPage+1);
+    if(event.key === "ArrowRight"){
 
-    if(event.key === "ArrowLeft")
-        goTo(currentPage-1);
+        goTo(currentPage + 1);
+
+    }
+
+    if(event.key === "ArrowLeft"){
+
+        goTo(currentPage - 1);
+
+    }
 
 });
 
 
-updateNavigation();
+/* ==========================================
+   FIRST CELEBRATION
+========================================== */
+
+window.addEventListener(
+"load",
+() => {
+
+    setTimeout(
+        celebratePage,
+        500
+    );
+
+});
 
 </script>
 
 </body>
-</html>
+</STARSp
