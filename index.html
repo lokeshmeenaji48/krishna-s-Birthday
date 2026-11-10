@@ -117,9 +117,7 @@
     <source src="Birthday.mp3" type="audio/mpeg">
 </audio>
 
-<button class="music-btn" id="musicBtn" onclick="toggleMusic()">
-    🎵 Play Music
-</button>
+<button onclick="startExperience()">SURPRISE KHOLO</button>
 <div class="app">
   <header class="topbar">
     <div class="brand">A little surprise · made with love</div>
@@ -298,52 +296,14 @@ Tu sirf rishta nahi — mera pyaara sa jahaan hai. <span class="heart">♥</span
 
   updateNavigation();
 
-const music = document.getElementById("music");
-const musicBtn = document.getElementById("musicBtn");
+function startExperience() {
+    const music = document.getElementById("music");
 
-async function startMusic(){
+    music.play().catch(() => {});
 
-    try{
-        await music.play();
-        musicBtn.innerText = "🔇 Pause Music";
-    }catch(error){
-        musicBtn.innerText = "🎵 Tap to Play";
-    }
-
+    // yahan tumhara page transition
+    document.getElementById("opening").classList.add("hide");
 }
-
-function toggleMusic(){
-
-    if(music.paused){
-        startMusic();
-    }else{
-        music.pause();
-        musicBtn.innerText = "🎵 Play Music";
-    }
-
-}
-
-// Attempt autoplay. Browser may block it.
-window.addEventListener("load",()=>{
-    startMusic();
-});
-
-
-/* REVEAL */
-
-function reveal(){
-
-    document.getElementById("intro").classList.add("hide");
-
-    startMusic();
-
-    // Celebration at opening
-    launchShow(18);
-
-}
-
-
-  
-</script>
+                                     </script>
 </body>
 </html>
