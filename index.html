@@ -96,9 +96,30 @@
     }
     @media(max-height:700px) and (min-width:681px){.page{min-height:560px}.panel{padding:25px}.photo-frame{max-width:250px}.photo-frame img,.photo-placeholder{aspect-ratio:4/3}}
     @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+
+    .music-btn{
+    position:fixed;
+    right:15px;
+    top:10px;
+    z-index:50;
+    background:#66243c;
+    color:white;
+    border:1px solid gold;
+    padding:6px 10px;
+    border-radius:30px;
+    cursor:pointer;
+    }
+    
   </style>
 </head>
 <body>
+  <audio id="music" loop preload="auto">
+    <source src="Birthday.mp3" type="audio/mpeg">
+</audio>
+
+<button class="music-btn" id="musicBtn" onclick="toggleMusic()">
+    🎵 Play Music
+</button>
 <div class="app">
   <header class="topbar">
     <div class="brand">A little surprise · made with love</div>
